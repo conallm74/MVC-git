@@ -10,9 +10,15 @@ public class PageController {
         return "home";
     }
 
-    // add a request mapping for doctors
-    @GetMapping("/doctors")
-    public String showDoctors(){
-        return "doctors";
+    // add a request mapping for the head doctor
+    @GetMapping("/leaders")
+    public String showLeaders(){
+        return "leaders";
     }
+
+    @GetMapping("/systems")
+    public String showSystems(){
+        return "systems";
+    }
+
 }
