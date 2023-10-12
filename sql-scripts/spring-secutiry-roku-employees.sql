@@ -47,10 +47,6 @@ CREATE TABLE `authorities` (
 
 INSERT INTO `authorities`
 VALUES
-('mike','ROLE_EMPLOYEE'),
 ('mike','ROLE_DOCTOR'),
-('harry','ROLE_EMPLOYEE'),
 ('harry','ROLE_NURSE'),
-('anna','ROLE_EMPLOYEE'),
-('anna','ROLE_HEADDOCTOR'),
 ('anna','ROLE_ADMIN');

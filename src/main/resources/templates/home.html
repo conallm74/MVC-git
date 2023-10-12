@@ -19,16 +19,23 @@
       Role(s): <span sec:authentication="principal.authorities"></span>
     </p>
   <hr>
+
+<div sec:authorize="hasRole('DOCTOR')">
 <!-- Add a link to point to /leaders -->
-<p>
-  <a th:href="@{/leaders}">LeaderShip Meeting</a>
-  (only for manager)
-</p>
+    <p>
+      <a th:href="@{/leaders}">LeaderShip Meeting</a>
+      (only for manager)
+    </p>
+</div>
+
 <!-- Add a link to point to /leaders -->
-<p>
-  <a th:href="@{/systems}">systems Meeting</a>
-  (only for systems)
-</p>
+<div sec:authorize="hasRole('ADMIN')">
+  <p>
+    <a th:href="@{/systems}">systems Meeting</a>
+    (only for systems)
+  </p>
+</div>
+
 
 <!-- Log out Button -->
 <form action="#" th:action="@{/logout}" method="POST">
