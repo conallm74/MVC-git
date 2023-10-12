@@ -7,5 +7,5 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public interface UserService extends UserDetailsService {
     public Users findByUserName(String userName);
 
-    void Save(TheNewUser userName);
+    void save(TheNewUser userName);
 }

@@ -49,17 +49,29 @@ public class RegController {
         logger.info("Registering..." + userName);
 
         // form validation
-        if
+        if (theBindingResult.hasErrors()){
+            return "register/registration-form";
+        }
+        // check if the new user already exists
+        Users existing = userService.findByUserName(userName);
+        if(existing != null){
+            theModel.addAttribute("rokuUser", new TheNewUser());
+            theModel.addAttribute("registrationError", "User is already registered");
 
+            logger.warning("User name already exists");
+            return "register/registration-form";
+        }
+        // create user account and store in the databse
+        userService.save(theNewUser);
+        logger.info("Successfully registered new user" + userName);
+        session.setAttribute("user", theNewUser);
+
+        // return to the confirmation page
+
+        return "register/registration-confirmation";
     }
 
-    // check if the new user already exists
-
-    // Users existing = userService.findByUserName(userName);
-
-
-
-
+// more in pdf
 
 }
 

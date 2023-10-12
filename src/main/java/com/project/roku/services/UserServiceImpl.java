@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void Save(TheNewUser userName) {
+    public void save(TheNewUser userName) {
         Users user = new Users();
 
         // assign user details to the new user object
