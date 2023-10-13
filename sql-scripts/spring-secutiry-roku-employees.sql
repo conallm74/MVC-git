@@ -1,4 +1,5 @@
-USE `employee_directory`;
+USE roku_directory;
+
 
 DROP TABLE IF EXISTS `authorities`;
 DROP TABLE IF EXISTS `users`;
@@ -48,5 +49,8 @@ CREATE TABLE `authorities` (
 INSERT INTO `authorities`
 VALUES
 ('mike','ROLE_DOCTOR'),
+('mike','ROLE_EMPLOYEE'),
 ('harry','ROLE_NURSE'),
-('anna','ROLE_ADMIN');
+('harry','ROLE_EMPLOYEE'),
+('anna','ROLE_ADMIN'),
+('anna','ROLE_EMPLOYEE');

@@ -1,6 +1,5 @@
 package com.project.roku;
 
-import com.project.roku.services.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -27,20 +26,6 @@ public class SecurityConfig {
     }
 
     // create bycrypt bean authentication
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
-
-    // authentication for bean
-
-    @Bean
-    public DaoAuthenticationProvider authenticationProvider(UserService userService){
-        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
-        auth.setUserDetailsService(userService);
-        auth.setPasswordEncoder(passwordEncoder());
-        return auth; 
-    }
 
 
 
