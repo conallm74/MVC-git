@@ -10,12 +10,14 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
+@Service
 public class UserServiceImpl implements UserService{
 
     private UsersDao usersDao;
@@ -39,14 +41,14 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void save(TheNewUser userName) {
+    public void save(TheNewUser rokuUser) {
         Users user = new Users();
 
         // assign user details to the new user object
-        user.setUserName(userName.getUserName());
-        user.setPassword(passwordEncoder.encode(userName.getPassword()));
-        user.setFirstName(userName.getFirstName());
-        user.setLastName(userName.getLastName());
+        user.setUserName(rokuUser.getUserName());
+        user.setPassword(passwordEncoder.encode(rokuUser.getPassword()));
+        user.setFirstName(rokuUser.getFirstName());
+        user.setLastName(rokuUser.getLastName());
         user.setEmail(user.getEmail());
 
         // give user default role of employee
