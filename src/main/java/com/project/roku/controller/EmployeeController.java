@@ -24,12 +24,11 @@ public class EmployeeController {
     }
 
     // get the employees from the database
-
     @GetMapping("/list")
     public String listEmployees(Model theModel) {
         List<Employee> employees = employeeservice.findAll();
 
-        theModel.addAttribute("employees-", employees);
+        theModel.addAttribute("employees", employees);
 
         return "list-employees";
     }
