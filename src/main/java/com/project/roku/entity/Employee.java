@@ -1,9 +1,14 @@
 package com.project.roku.entity;
 
+import com.project.roku.services.EmployeeService;
+import jakarta.persistence.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="authorities")
+@Table(name="users")
 public class Employee {
     // define fields
     @Id // primary key
