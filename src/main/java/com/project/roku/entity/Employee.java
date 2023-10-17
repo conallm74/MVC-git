@@ -27,6 +27,9 @@ public class Employee {
     public Employee(String userName) {
         this.userName = userName;
     }
+    public Employee(int id){
+        this.id = id;
+    }
     // getters setters
 
     public int getId() {
