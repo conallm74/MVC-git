@@ -1,14 +1,10 @@
 package com.project.roku.entity;
 
-import com.project.roku.services.EmployeeService;
-import jakarta.persistence.*;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="users")
+@Table(name="employee")
 public class Employee {
     // define fields
     @Id // primary key
@@ -16,21 +12,28 @@ public class Employee {
     @Column(name="id")
     private int id;
 
-    @Column(name="username")
-    private String userName;
+    @Column(name="firstName")
+    private String firstName;
 
+    @Column(name="lastName")
+    private String lastName;
+
+    @Column(name="email")
+    private String email;
 
     // define constructors
+
     public Employee(){
     }
 
-    public Employee(String userName) {
-        this.userName = userName;
+    public Employee(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
     }
-    public Employee(int id){
-        this.id = id;
-    }
-    // getters setters
+
+    // getters and setters
+
 
     public int getId() {
         return id;
@@ -40,21 +43,37 @@ public class Employee {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    // to string method
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
-                ", userName='" + userName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

@@ -2,12 +2,6 @@ package com.project.roku.rest;
 // this is to use the EmployeeDAO
 
 // import com.project.roku.dao.EmployeeDao;
-import com.project.roku.entity.Employee;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 /*
 @RestController
 @RequestMapping("/api")

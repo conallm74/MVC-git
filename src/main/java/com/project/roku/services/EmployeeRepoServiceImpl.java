@@ -1,47 +1,45 @@
 package com.project.roku.services;
 
 import com.project.roku.dao.EmployeeRepository;
-import com.project.roku.entity.Employee;
-import jakarta.transaction.Transactional;
+import com.project.roku.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeRepoServiceImpl implements EmployeeRepoService {
 
     private EmployeeRepository employeeRepository;
 
     @Autowired // because we're making use of injection
-    public EmployeeServiceImpl(EmployeeRepository theEmployeeRepository){
+    public EmployeeRepoServiceImpl(EmployeeRepository theEmployeeRepository){
         employeeRepository = theEmployeeRepository;
     }
     @Override
-    public List<Employee> findAll() {
+    public List<User> findAll() {
         return employeeRepository.findAll();
     }
     @Override
-    public Employee findById(int theId){
-        Optional<Employee> result = employeeRepository.findById(theId);
+    public User findById(int theId){
+        Optional<User> result = employeeRepository.findById(theId);
 
-        Employee theEmployee = null;
+        User theUser = null;
         if (result.isPresent()){
-            theEmployee = result.get();
+            theUser = result.get();
         }
         else {
             // we couldn't find employee by Id
             throw new RuntimeException("Couldn't find employee by-" + theId + "Id");
         }
-        return theEmployee;
+        return theUser;
     }
 
     // no need for @Transactional as JpaRepo provides it out of the box 
     @Override
-    public Employee save(Employee theEmployee) {
-        return employeeRepository.save(theEmployee);
+    public User save(User theUser) {
+        return employeeRepository.save(theUser);
     }
 
     @Override
