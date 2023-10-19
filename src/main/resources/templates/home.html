@@ -40,7 +40,7 @@
 <!-- Add a Link for the Employees list, making it visible to admins -->
 <div sec:authorize="hasRole('ADMIN')">
   <p>
-    <a th:href="@{/users/list}">View Employees</a>
+    <a th:href="@{/employees/list}">View Employees</a>
     Text
   </p>
 </div>

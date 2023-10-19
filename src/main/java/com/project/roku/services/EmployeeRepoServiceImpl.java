@@ -1,6 +1,7 @@
 package com.project.roku.services;
 
 import com.project.roku.dao.EmployeeRepository;
+import com.project.roku.entity.Employee;
 import com.project.roku.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,14 +19,14 @@ public class EmployeeRepoServiceImpl implements EmployeeRepoService {
         employeeRepository = theEmployeeRepository;
     }
     @Override
-    public List<User> findAll() {
+    public List<Employee> findAll() {
         return employeeRepository.findAll();
     }
     @Override
-    public User findById(int theId){
-        Optional<User> result = employeeRepository.findById(theId);
+    public Employee findById(int theId){
+        Optional<Employee> result = employeeRepository.findById(theId);
 
-        User theUser = null;
+        Employee theUser = null;
         if (result.isPresent()){
             theUser = result.get();
         }
@@ -38,7 +39,9 @@ public class EmployeeRepoServiceImpl implements EmployeeRepoService {
 
     // no need for @Transactional as JpaRepo provides it out of the box 
     @Override
-    public User save(User theUser) {
+    public Employee save(Employee theUser) {
+
+        // need to add a safety feature in which if no data is entered there is an error.
         return employeeRepository.save(theUser);
     }
 

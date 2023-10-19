@@ -1,15 +1,16 @@
 package com.project.roku.services;
 
+import com.project.roku.entity.Employee;
 import com.project.roku.entity.User;
 
 import java.util.List;
 
 public interface EmployeeRepoService {
-    List<User> findAll();
+    List<Employee> findAll();
 
-    User findById(int theId);
+    Employee findById(int theId);
 
-    User save(User theUser);
+    Employee save(Employee theUser);
 
     void deleteById(int theId);
 }
