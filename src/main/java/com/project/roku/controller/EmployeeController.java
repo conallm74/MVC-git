@@ -19,8 +19,8 @@ public class EmployeeController {
 
     // public EmployeeController(){}
 
-    public EmployeeController(EmployeeRepoService theEmployeeservice) {
-        this.employeeService = theEmployeeservice;
+    public EmployeeController(EmployeeRepoService theEmployeeService) {
+        this.employeeService = theEmployeeService;
     }
 
     // get the employees from the database

@@ -8,7 +8,7 @@ public class LoginController {
     @GetMapping("/showMyLoginPage")
     public String showMyLoginPage(){
         // return "plain-login";
-        return "roku-login";
+        return "login/roku-login";
     }
 
     // add request mapping for /access-denied

@@ -11,9 +11,9 @@ public class PageController {
     }
 
     // add a request mapping for the head doctor
-    @GetMapping("/leaders")
-    public String showLeaders(){
-        return "leaders";
+    @GetMapping("/prescriptions")
+    public String prescriptionManagement(){
+        return "prescription-management/prescription-management";
     }
 
     @GetMapping("/systems")
