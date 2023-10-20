@@ -41,7 +41,7 @@ public class EmployeeRepoServiceImpl implements EmployeeRepoService {
     @Override
     public Employee save(Employee theUser) {
 
-        // need to add a safety feature in which if no data is entered there is an error.
+
         return employeeRepository.save(theUser);
     }
 

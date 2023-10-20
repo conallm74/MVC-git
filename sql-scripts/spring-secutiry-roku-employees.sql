@@ -75,3 +75,51 @@ VALUES
 ('harry','ROLE_EMPLOYEE'),
 ('anna','ROLE_ADMIN'),
 ('anna','ROLE_EMPLOYEE');
+
+
+
+DROP TABLE IF EXISTS `medical_history`;
+DROP TABLE IF EXISTS `medication_history`;
+DROP TABLE IF EXISTS `patients`;
+DROP TABLE IF EXISTS `medications`;
+
+
+
+
+CREATE TABLE `patients`(
+	PatientId INT PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Email VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE `medical_history` (
+	MedicalHistoryId INT PRIMARY KEY AUTO_INCREMENT,
+    PatientId INT NOT NULL,
+    Allergies TEXT,
+    MedicalConditions TEXT,
+    SurgicalHistory TEXT,
+    MedicationHistroy TEXT,
+
+    FOREIGN KEY (PatientId) REFERENCES patients(PatientId)
+);
+
+CREATE TABLE `medications`(
+	MedicationId INT PRIMARY KEY AUTO_INCREMENT,
+    MedicationName VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE `medication_history`(
+	MedicationHistoryID INT PRIMARY KEY AUTO_INCREMENT,
+    PatientId INT NOT NULL,
+    MedicationId INT NOT NULL,
+    PrescriptionDate DATE NOT NULL,
+    Dosage VARCHAR(50),
+    ReasonForPres TEXT,
+    PrescribingDoctor INT NOT NULL,
+    Response TEXT,
+
+    FOREIGN KEY (PatientId) REFERENCES patients(PatientId),
+    FOREIGN KEY (MedicationId) REFERENCES medications (MedicationId),
+    FOREIGN KEY (PrescribingDoctor) REFERENCES employee (id)
+);
