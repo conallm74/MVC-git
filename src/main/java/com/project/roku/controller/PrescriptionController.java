@@ -2,28 +2,46 @@ package com.project.roku.controller;
 
 import com.project.roku.entity.Patient;
 import com.project.roku.services.PatientRepoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/patientsList")
+@RequestMapping("/prescriptions")
 public class PrescriptionController {
+
     private PatientRepoService patientService;
 
+    @Autowired
     public PrescriptionController(PatientRepoService thePatientService){
         this.patientService = thePatientService;
     }
 
-    // get the patient from the database
+    @GetMapping("/showPresForm")
+    public String showPresForm(@RequestParam("patientId") int theId Model theModel){
+        // create model attribute to bind the data from to
+        Patient thePatient = patientS
 
-    @GetMapping("patient")
-    public String patientList(Model theModel){
-        List<Patient> thePatients = patientService.findAll();
-            theModel.addAttribute("patients", thePatients);
-            return "prescription-management/patient-management";
+        theModel.addAttribute("patient", thePatient);
+        return "prescriptions/prescription-form";
     }
+
+
+    /*
+       @GetMapping("/showFormForUpdate")
+    public String showFormForUpdate(@RequestParam("employeeId") int theId, Model theModel){
+        // get the employee from the service
+        Employee theEmployee = employeeService.findById(theId);
+
+        // set the employee in the model to prepopulate the model/form
+        theModel.addAttribute("employee", theEmployee);
+        // send over to our form
+
+        return "employees/employee-form";
+    }
+     */
+
 }

@@ -3,6 +3,7 @@ package com.project.roku.controller;
 import com.project.roku.entity.Employee;
 import com.project.roku.entity.User;
 import com.project.roku.services.EmployeeRepoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,13 +19,13 @@ public class EmployeeController {
     // make consructors for injectin
 
     // public EmployeeController(){}
-
+    @Autowired
     public EmployeeController(EmployeeRepoService theEmployeeService) {
         this.employeeService = theEmployeeService;
     }
 
     // get the employees from the database
-    @GetMapping("/list")
+    @GetMapping("/employeeList")
     public String listEmployees(Model theModel) {
         List<Employee> theEmployees = employeeService.findAll();
 

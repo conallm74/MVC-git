@@ -20,10 +20,10 @@
     </p>
   <hr>
 
-<div sec:authorize="hasRole('DOCTOR')">
+<div sec:authorize="hasAnyRole('DOCTOR', 'ADMIN')">
 <!-- Add a link to point to /leaders -->
     <p>
-      <a th:href="@{/prescriptions}">Prescription Management</a>
+      <a th:href="@{/patients/patientList}">View Patients</a>
     </p>
 </div>
 
@@ -39,7 +39,7 @@
 <!-- Add a Link for the Employees list, making it visible to admins -->
 <div sec:authorize="hasRole('ADMIN')">
   <p>
-    <a th:href="@{/employees/list}">View Employees</a>
+    <a th:href="@{/employees/employeeList}">View Employees</a>
     Text
   </p>
 </div>

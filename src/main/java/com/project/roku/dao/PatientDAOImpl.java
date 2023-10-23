@@ -22,4 +22,20 @@ public class PatientDAOImpl implements PatientDAO{
             return null;
         }
     }
+    /*
+     public Patient findById(int theId) {
+        Optional<Patient> result = patientRepository.findById(theId);
+
+        Patient thePatient = null;
+        if (result.isPresent()){
+            thePatient = result.get();
+        }
+        else {
+            throw new RuntimeException("Couldn't find patient by that ID");
+        }
+        return thePatient;
+    }
+
+    I think this might be closer to what we need. Then again I'm not sure... Maybe need to try a few things.
+     */
 }

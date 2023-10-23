@@ -10,17 +10,20 @@ public class Patient {
     // define fields
     @Id // primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="PatientId")
+    @Column(name="patient_id")
     private int patientId;
 
-    @Column(name="FirstName")
+    @Column(name="first_name")
     private String firstName;
 
-    @Column(name="LastName")
+    @Column(name="last_name")
     private String lastName;
 
-    @Column(name="Email")
+    @Column(name="email")
     private String email;
+
+    @Column(name="address")
+    private String address;
 
     public Patient(){}
 
@@ -63,6 +66,14 @@ public class Patient {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     // to string
