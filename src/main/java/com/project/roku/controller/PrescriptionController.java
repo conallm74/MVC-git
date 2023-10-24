@@ -17,8 +17,8 @@ import java.util.List;
 public class PrescriptionController {
 
     // injection countries for medication list
-    @Value("${meds}")
-    private List<String> meds;
+   // @Value("${meds}")
+   // private List<String> meds;
 
     private PatientRepoService patientService;
 
@@ -28,15 +28,15 @@ public class PrescriptionController {
     }
 
     @GetMapping("/showPresForm")
-    public String showPresForm(@RequestParam("patientId") int theId, Model theModel){
+    public String showPresForm(@RequestParam(value="patientId") int theId, Model theModel){
         // create model attribute to bind the data from to
         Patient thePatient = patientService.findById(theId);
 
         // set the employee in the model to prepopulate the model/form
         theModel.addAttribute("patient", thePatient);
 
-        // adding the drop down meds to the model
-        theModel.addAttribute("medications", meds);
+        // adding the drop-down meds to the model
+        // theModel.addAttribute("medications", meds);
 
         // send over to our form
         return "prescriptions/prescription-form";

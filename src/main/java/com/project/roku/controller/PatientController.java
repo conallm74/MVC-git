@@ -26,6 +26,6 @@ public class PatientController {
     public String patientList(Model theModel){
         List<Patient> thePatients = patientService.findAll();
             theModel.addAttribute("patient", thePatients);
-            return "patients/pres-mgmt";
+            return "patients/patient-list";
     }
 }

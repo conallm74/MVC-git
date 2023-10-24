@@ -20,8 +20,8 @@
     <p class="h4 mb-4">Save</p>
 </div>
 
-<form action="#" th:action="{@/prescriptions/showPresForm}"
-      th:object="${patient}" method="POST">
+<form action="@{/prescriptions/showPresForm}" th:object="${patient}" method="POST">
+
     <!--Adding hidden from field to handle updates-->
     <input type="hidden" th:field="*{patientId}">
 
@@ -33,8 +33,10 @@
            class="form-control mb-4 w-25" placeholder="Email">
     <input type="text" th:field="*{address}"
            class="form-control mb-4 w-25" placeholder="Address">
+    <!--
 
     <select th:field="tempMed : ${medications} th:value=${tempMed}" th:text="${tempMed}"/>
+    -->
     <button type="submit" class="btn btn-info col-2">Save</button>
 </form>
 

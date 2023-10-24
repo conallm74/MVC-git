@@ -41,10 +41,11 @@
             <td th:text="${tempPatient.email}" />
             <td th:text="${tempPatient.address}" />
 
+
             <!-- add a link for managing prescriptions -->
             <div sec:authorize="hasRole('DOCTOR')">
                 <td>
-                    <a th:href="@{/prescriptions/showPresForm}"
+                    <a th:href="@{/prescriptions/showPresForm(patientId=${tempPatient.patientId})}"
                        class="btn btn-primary btn-sm mb-3">
                         Manage Prescription
                     </a>
