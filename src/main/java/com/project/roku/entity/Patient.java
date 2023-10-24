@@ -35,7 +35,6 @@ public class Patient {
 
     // getters and setters
 
-
     public int getPatientId() {
         return patientId;
     }

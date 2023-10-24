@@ -53,6 +53,8 @@ public class EmployeeController {
         return "redirect:/employees/list";
     }
 
+
+    // controller code to update the employee info
     @GetMapping("/showFormForUpdate")
     public String showFormForUpdate(@RequestParam("employeeId") int theId, Model theModel){
         // get the employee from the service
