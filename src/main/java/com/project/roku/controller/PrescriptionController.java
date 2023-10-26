@@ -32,7 +32,7 @@ public class PrescriptionController {
         // create model attribute to bind the data from to
         Patient thePatient = patientService.findById(theId);
 
-        // set the employee in the model to prepopulate the model/form
+        // set the patient in the model to prepopulate the model/form
         theModel.addAttribute("patient", thePatient);
 
         // adding the drop-down meds to the model
