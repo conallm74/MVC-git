@@ -130,6 +130,8 @@
 				<version>1.7.1</version>
 			</extension>
 		</extensions>
+		<!-- to ensure we can access the protobuf and gRPC code -->
+		<sourceDirectory>src/main/java</sourceDirectory>
 	</build>
 
 

@@ -7,6 +7,7 @@ import jakarta.persistence.Table;
 import org.springframework.data.annotation.Id;
 
 
+/*
 @Entity
 @Table(name="medication_history")
 public class MedicationHistory {
@@ -21,3 +22,6 @@ public class MedicationHistory {
 }
 
 
+
+
+ */
