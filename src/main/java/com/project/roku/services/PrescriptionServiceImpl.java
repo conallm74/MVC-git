@@ -6,10 +6,12 @@ import com.project.roku.entity.Employee;
 import com.project.roku.entity.Patient;
 import com.project.roku.medical_entities.Prescription;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PrescriptionServiceImpl implements PrescriptionRepoService{
 
     private PrescriptionRepo prescriptionRepo;

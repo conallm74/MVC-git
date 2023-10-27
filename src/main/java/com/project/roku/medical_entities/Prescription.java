@@ -2,8 +2,10 @@ package com.project.roku.medical_entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import org.springframework.data.annotation.Id;
+
+import java.sql.Date;
 
 @Entity
 @Table(name="prescription")
@@ -13,34 +15,35 @@ public class Prescription {
     @Column(name="prescription_id")
     private int prescriptionId;
 
-    @Column(name="patient_id")
-    private int patientId;
+    @Column(name="patient_name")
+    private String patientName;
 
-    @Column(name="medication_id")
-    private int medicationId;
+    @Column(name="medication_name")
+    private String medicationName;
 
     @Column(name="prescription_date")
-    private int prescriptionDate;
+    private java.sql.Date prescriptionDate;
 
     @Column(name="dosage")
     private String dosage;
 
     @Column(name="prescribing_doctor")
-    private int prescribingDoctor;
+    private String prescribingDoctor;
 
     // constructors
     public Prescription(){}
 
-    public Prescription(int prescriptionId, int patientId, int medicationId, int prescriptionDate, String dosage, int prescribingDoctor) {
+
+    public Prescription(int prescriptionId, String patientName, String medicationName, Date prescriptionDate, String dosage, String prescribingDoctor) {
         this.prescriptionId = prescriptionId;
-        this.patientId = patientId;
-        this.medicationId = medicationId;
+        this.patientName = patientName;
+        this.medicationName = medicationName;
         this.prescriptionDate = prescriptionDate;
         this.dosage = dosage;
         this.prescribingDoctor = prescribingDoctor;
     }
 
-    // getters and setter
+    // getters and setters
 
 
     public int getPrescriptionId() {
@@ -51,27 +54,27 @@ public class Prescription {
         this.prescriptionId = prescriptionId;
     }
 
-    public int getPatientId() {
-        return patientId;
+    public String getPatientName() {
+        return patientName;
     }
 
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
     }
 
-    public int getMedicationId() {
-        return medicationId;
+    public String getMedicationName() {
+        return medicationName;
     }
 
-    public void setMedicationId(int medicationId) {
-        this.medicationId = medicationId;
+    public void setMedicationName(String medicationName) {
+        this.medicationName = medicationName;
     }
 
-    public int getPrescriptionDate() {
+    public Date getPrescriptionDate() {
         return prescriptionDate;
     }
 
-    public void setPrescriptionDate(int prescriptionDate) {
+    public void setPrescriptionDate(Date prescriptionDate) {
         this.prescriptionDate = prescriptionDate;
     }
 
@@ -83,24 +86,26 @@ public class Prescription {
         this.dosage = dosage;
     }
 
-    public int getPrescribingDoctor() {
+    public String getPrescribingDoctor() {
         return prescribingDoctor;
     }
 
-    public void setPrescribingDoctor(int prescribingDoctor) {
+    public void setPrescribingDoctor(String prescribingDoctor) {
         this.prescribingDoctor = prescribingDoctor;
     }
 
     // to string
+
+
     @Override
     public String toString() {
         return "Prescription{" +
                 "prescriptionId=" + prescriptionId +
-                ", patientId=" + patientId +
-                ", medicationId=" + medicationId +
+                ", patientName='" + patientName + '\'' +
+                ", medicationName='" + medicationName + '\'' +
                 ", prescriptionDate=" + prescriptionDate +
                 ", dosage='" + dosage + '\'' +
-                ", prescribingDoctor=" + prescribingDoctor +
+                ", prescribingDoctor='" + prescribingDoctor + '\'' +
                 '}';
     }
 }
