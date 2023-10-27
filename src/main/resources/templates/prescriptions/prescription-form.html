@@ -17,7 +17,7 @@
 <div class="container">
     <h3>Prescription Management</h3>
     <hr>
-    <p class="h4 mb-4">Save</p>
+    <p class="h4 mb-4">Prescription Form</p>
 </div>
 
 <form action="@{/prescriptions/showPresForm}" th:object="${patient}" method="POST">
@@ -33,17 +33,19 @@
 
     <p>Address: <span th:text="${patient.address}"></span></p>
 
+    <form action="@{/prescriptions/prescribePrescription}" th:object="${prescription}" method="POST">
 
+    <input type="hidden" th:field="*{prescriptionId}">
 
+    <input type="text" th:field=""
 
-    <!--
     <input type="text" th:field="*{lastName}"
            class="form-control mb-4 w-25" placeholder="Last Name">
+
     <input type="text" th:field="*{email}"
            class="form-control mb-4 w-25" placeholder="Email">
-    <input type="text" th:field="*{address}"
-           class="form-control mb-4 w-25" placeholder="Address">
-           -->
+    <!-- submit button -->
+    <button type="submit" class="btn btn-info col-2">Save</button>
 
 <!--
     <select th:field="tempMed : ${medications} th:value=${tempMed}" th:text="${tempMed}"/>

@@ -15,8 +15,11 @@ public class Prescription {
     @Column(name="prescription_id")
     private int prescriptionId;
 
-    @Column(name="patient_name")
-    private String patientName;
+    @Column(name="patient_first_name")
+    private String patientFirstName;
+
+    @Column(name="patient_last_name")
+    private String patientLastName;
 
     @Column(name="medication_name")
     private String medicationName;
@@ -33,15 +36,16 @@ public class Prescription {
     // constructors
     public Prescription(){}
 
-
-    public Prescription(int prescriptionId, String patientName, String medicationName, Date prescriptionDate, String dosage, String prescribingDoctor) {
+    public Prescription(int prescriptionId, String patientFirstName, String patientLastName, String medicationName, Date prescriptionDate, String dosage, String prescribingDoctor) {
         this.prescriptionId = prescriptionId;
-        this.patientName = patientName;
+        this.patientFirstName = patientFirstName;
+        this.patientLastName = patientLastName;
         this.medicationName = medicationName;
         this.prescriptionDate = prescriptionDate;
         this.dosage = dosage;
         this.prescribingDoctor = prescribingDoctor;
     }
+
 
     // getters and setters
 
@@ -54,12 +58,21 @@ public class Prescription {
         this.prescriptionId = prescriptionId;
     }
 
-    public String getPatientName() {
-        return patientName;
+
+    public String getPatientFirstName() {
+        return patientFirstName;
     }
 
-    public void setPatientName(String patientName) {
-        this.patientName = patientName;
+    public void setPatientFirstName(String patientFirstName) {
+        this.patientFirstName = patientFirstName;
+    }
+
+    public String getPatientLastName() {
+        return patientLastName;
+    }
+
+    public void setPatientLastName(String patientLastName) {
+        this.patientLastName = patientLastName;
     }
 
     public String getMedicationName() {
@@ -101,7 +114,8 @@ public class Prescription {
     public String toString() {
         return "Prescription{" +
                 "prescriptionId=" + prescriptionId +
-                ", patientName='" + patientName + '\'' +
+                ", patientFirstName='" + patientFirstName + '\'' +
+                ", patientLastName='" + patientLastName + '\'' +
                 ", medicationName='" + medicationName + '\'' +
                 ", prescriptionDate=" + prescriptionDate +
                 ", dosage='" + dosage + '\'' +

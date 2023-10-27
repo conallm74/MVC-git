@@ -1,7 +1,9 @@
 package com.project.roku.controller;
 
 import com.project.roku.entity.Patient;
+import com.project.roku.medical_entities.Prescription;
 import com.project.roku.services.PatientRepoService;
+import com.project.roku.services.PrescriptionRepoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,14 @@ public class PrescriptionController {
 
     private PatientRepoService patientService;
 
+    // injecting prescription service
+    private PrescriptionRepoService prescriptionService;
+
+    @Autowired
+    public PrescriptionController(PrescriptionRepoService thePrescriptionService){
+        this.prescriptionService = thePrescriptionService;
+    }
+
     @Autowired
     public PrescriptionController(PatientRepoService thePatientService){
         this.patientService = thePatientService;
@@ -39,6 +49,14 @@ public class PrescriptionController {
         // theModel.addAttribute("medications", meds);
 
         // send over to our form
+        return "prescriptions/prescription-form";
+    }
+
+    @GetMapping("/prescribePrescription")
+    public String prescribePrescription(Model theModel){
+        Prescription thePrescription = new Prescription();
+
+        theModel.addAttribute("prescription", theModel);
         return "prescriptions/prescription-form";
     }
 }
