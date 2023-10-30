@@ -1,5 +1,6 @@
 package com.project.roku.services;
 
+import com.project.roku.DTO.PrescriptionDTO;
 import com.project.roku.dao.PatientRepository;
 import com.project.roku.dao.PrescriptionRepo;
 import com.project.roku.entity.Employee;
@@ -18,7 +19,8 @@ public class PrescriptionServiceImpl implements PrescriptionRepoService{
 
     private PrescriptionRepo prescriptionRepo;
 
-    @Autowired
+    private ModelMapper modelMapper;
+
     public PrescriptionServiceImpl(PrescriptionRepo thePrescriptionRepo){
         prescriptionRepo = thePrescriptionRepo;
     }
@@ -54,5 +56,19 @@ public class PrescriptionServiceImpl implements PrescriptionRepoService{
     }
 
 
+    // mapping for DAO
 
+    @Autowired
+    public PrescriptionServiceImpl(PrescriptionRepo prescriptionRepo, ModelMapper theModelMapper){
+        this.prescriptionRepo = prescriptionRepo;
+        this.modelMapper = theModelMapper;
+    }
+
+    public PrescriptionDTO convertPrescriptionToDTO(Prescription prescription) {
+        return modelMapper.map(prescription, PrescriptionDTO.class);
+    }
+
+    public Prescription convertDTOToPrescription(PrescriptionDTO dto) {
+        return modelMapper.map(dto, Prescription.class);
+    }
 }

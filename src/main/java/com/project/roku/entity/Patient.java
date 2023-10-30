@@ -47,20 +47,6 @@ public class Patient {
         ); return patient;
     }
 
-    /*
-   Prescription convertDTOToPrescription(PrescriptionDTO dto){
-        Prescription prescription = new Prescription(
-                dto.getPrescriptionId(),
-                dto.getPatientId(),
-                dto.getMedicationName(),
-                dto.getPrescriptionDate(),
-                dto.getPrescribingDoctor(),
-                dto.getDosage()
-        ); return prescription;
-    }
-}
-     */
-
     // getters and setters
 
     public int getPatientId() {

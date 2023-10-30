@@ -46,6 +46,7 @@ public class Prescription {
         this.prescribingDoctor = prescribingDoctor;
     }
 
+    /*
     // mapping to DTO
 
     Prescription convertDTOToPrescription(PrescriptionDTO dto){
@@ -58,6 +59,8 @@ public class Prescription {
                 dto.getDosage()
         ); return prescription;
     }
+
+     */
     // getters and setters
 
 

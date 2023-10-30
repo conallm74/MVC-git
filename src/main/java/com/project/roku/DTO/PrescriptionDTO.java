@@ -31,6 +31,14 @@ public class PrescriptionDTO {
 
     private String patientAddress;
 
+
+    public PrescriptionDTO(){}
+    // I commented this bit out because the instruction said
+    /*
+    Your DTO should have an empty constructor, and each field should have getters and setters to make the mapping work
+     */
+    /*
+
     public PrescriptionDTO(int prescriptionId, int patientId, String medicationName, Date prescriptionDate, String prescribingDoctor, String dosage,
                             String patientFirstName, String patientLastName, String patientAddress
     ) {
@@ -59,6 +67,8 @@ public class PrescriptionDTO {
         );
         return dto;
     }
+
+     */
 
     // getters and setters from prescription
 
@@ -134,5 +144,22 @@ public class PrescriptionDTO {
 
     public void setPatientAddress(String patientAddress) {
         this.patientAddress = patientAddress;
+    }
+
+    // to string
+
+    @Override
+    public String toString() {
+        return "PrescriptionDTO{" +
+                "prescriptionId=" + prescriptionId +
+                ", patientId=" + patientId +
+                ", medicationName='" + medicationName + '\'' +
+                ", prescriptionDate=" + prescriptionDate +
+                ", prescribingDoctor='" + prescribingDoctor + '\'' +
+                ", dosage='" + dosage + '\'' +
+                ", patientFirstName='" + patientFirstName + '\'' +
+                ", patientLastName='" + patientLastName + '\'' +
+                ", patientAddress='" + patientAddress + '\'' +
+                '}';
     }
 }

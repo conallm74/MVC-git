@@ -1,5 +1,6 @@
 package com.project.roku.controller;
 
+import com.project.roku.DTO.PrescriptionDTO;
 import com.project.roku.entity.Patient;
 import com.project.roku.medical_entities.Prescription;
 import com.project.roku.services.PatientRepoService;
@@ -43,6 +44,16 @@ public class PrescriptionController {
     public String showPresForm(@RequestParam(value="patientId") int theId, Model theModel){
         // create model attribute to bind the data from to
         Patient thePatient = patientService.findById(theId);
+
+        // set the data to the DAO
+        // Create a PrescriptionDTO and populate it with data from the entities
+        PrescriptionDTO prescriptionDTO = new PrescriptionDTO();
+        prescriptionDTO.setPatientFirstName(prescription.get);
+
+
+
+
+
 
         // set the patient in the model to prepopulate the model/form
         theModel.addAttribute("patient", thePatient);
