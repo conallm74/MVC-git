@@ -1,8 +1,14 @@
 package com.project.roku.medical_entities;
 
+import com.project.roku.DTO.PrescriptionDTO;
+import com.project.roku.dao.PrescriptionRepo;
+import com.project.roku.services.PrescriptionServiceImpl;
 import jakarta.persistence.*;
+import org.modelmapper.ModelMapper;
+import org.springframework.context.annotation.Bean;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name="prescription")
@@ -40,6 +46,18 @@ public class Prescription {
         this.prescribingDoctor = prescribingDoctor;
     }
 
+    // mapping to DTO
+
+    Prescription convertDTOToPrescription(PrescriptionDTO dto){
+        Prescription prescription = new Prescription(
+                dto.getPrescriptionId(),
+                dto.getPatientId(),
+                dto.getMedicationName(),
+                dto.getPrescriptionDate(),
+                dto.getPrescribingDoctor(),
+                dto.getDosage()
+        ); return prescription;
+    }
     // getters and setters
 
 
@@ -92,6 +110,8 @@ public class Prescription {
         this.prescribingDoctor = prescribingDoctor;
     }
 
+
+
     // to string
 
 
@@ -106,4 +126,5 @@ public class Prescription {
                 ", prescribingDoctor='" + prescribingDoctor + '\'' +
                 '}';
     }
+
 }

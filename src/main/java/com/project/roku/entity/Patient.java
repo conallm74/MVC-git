@@ -1,6 +1,7 @@
 package com.project.roku.entity;
 
 
+import com.project.roku.DTO.PrescriptionDTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,24 +15,51 @@ public class Patient {
     private int patientId;
 
     @Column(name="first_name")
-    private String firstName;
+    private String patientFirstName;
 
     @Column(name="last_name")
-    private String lastName;
+    private String patientLastName;
 
     @Column(name="email")
-    private String email;
+    private String patientEmail;
 
     @Column(name="address")
-    private String address;
+    private String patientAddress;
 
     public Patient(){}
 
-    public Patient(String firstName, String lastName, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+    public Patient(String firstName, String lastName, String patientEmail, String patientAddress) {
+        this.patientFirstName = firstName;
+        this.patientLastName = lastName;
+        this.patientEmail = patientEmail;
+        this.patientAddress = patientAddress;
     }
+
+    // mapping for DTO
+    public Patient(String patientFirstName, String patientLastName, String patientAddress) {
+    }
+
+    Patient convertDTOToPatient(PrescriptionDTO dto){
+        Patient patient = new Patient(
+                dto.getPatientFirstName(),
+                dto.getPatientLastName(),
+                dto.getPatientAddress()
+        ); return patient;
+    }
+
+    /*
+   Prescription convertDTOToPrescription(PrescriptionDTO dto){
+        Prescription prescription = new Prescription(
+                dto.getPrescriptionId(),
+                dto.getPatientId(),
+                dto.getMedicationName(),
+                dto.getPrescriptionDate(),
+                dto.getPrescribingDoctor(),
+                dto.getDosage()
+        ); return prescription;
+    }
+}
+     */
 
     // getters and setters
 
@@ -43,46 +71,64 @@ public class Patient {
         this.patientId = patientId;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getPatientFirstName() {
+        return patientFirstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setPatientFirstName(String patientFirstName) {
+        this.patientFirstName = patientFirstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getPatientLastName() {
+        return patientLastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setPatientLastName(String patientLastName) {
+        this.patientLastName = patientLastName;
+    }
+
+    public String getPatientEmail() {
+        return patientEmail;
+    }
+
+    public void setPatientEmail(String patientEmail) {
+        this.patientEmail = patientEmail;
     }
 
     public String getEmail() {
-        return email;
+        return patientEmail;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.patientEmail = email;
     }
 
     public String getAddress() {
-        return address;
+        return patientEmail;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.patientEmail = address;
+    }
+
+    public String getPatientAddress() {
+        return patientAddress;
+    }
+
+    public void setPatientAddress(String patientAddress) {
+        this.patientAddress = patientAddress;
     }
 
     // to string
+
     @Override
     public String toString() {
         return "Patient{" +
                 "patientId=" + patientId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
+                ", patientFirstName='" + patientFirstName + '\'' +
+                ", patientLastName='" + patientLastName + '\'' +
+                ", patientEmail='" + patientEmail + '\'' +
+                ", patientAddress='" + patientAddress + '\'' +
                 '}';
     }
 }

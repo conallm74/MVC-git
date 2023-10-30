@@ -5,7 +5,9 @@ import com.project.roku.dao.PrescriptionRepo;
 import com.project.roku.entity.Employee;
 import com.project.roku.entity.Patient;
 import com.project.roku.medical_entities.Prescription;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,5 +52,7 @@ public class PrescriptionServiceImpl implements PrescriptionRepoService{
     public void deleteById(int theId) {
         prescriptionRepo.deleteById(theId);
     }
+
+
 
 }
