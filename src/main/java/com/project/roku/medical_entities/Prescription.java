@@ -1,9 +1,6 @@
 package com.project.roku.medical_entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.sql.Date;
 
@@ -12,14 +9,12 @@ import java.sql.Date;
 public class Prescription {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="prescription_id")
     private int prescriptionId;
 
-    @Column(name="patient_first_name")
-    private String patientFirstName;
-
-    @Column(name="patient_last_name")
-    private String patientLastName;
+    @Column(name="patient_id")
+    private int patientId;
 
     @Column(name="medication_name")
     private String medicationName;
@@ -36,16 +31,14 @@ public class Prescription {
     // constructors
     public Prescription(){}
 
-    public Prescription(int prescriptionId, String patientFirstName, String patientLastName, String medicationName, Date prescriptionDate, String dosage, String prescribingDoctor) {
+    public Prescription(int prescriptionId, int patientId, String medicationName, Date prescriptionDate, String dosage, String prescribingDoctor) {
         this.prescriptionId = prescriptionId;
-        this.patientFirstName = patientFirstName;
-        this.patientLastName = patientLastName;
+        this.patientId = patientId;
         this.medicationName = medicationName;
         this.prescriptionDate = prescriptionDate;
         this.dosage = dosage;
         this.prescribingDoctor = prescribingDoctor;
     }
-
 
     // getters and setters
 
@@ -59,20 +52,12 @@ public class Prescription {
     }
 
 
-    public String getPatientFirstName() {
-        return patientFirstName;
+    public int getPatientId() {
+        return patientId;
     }
 
-    public void setPatientFirstName(String patientFirstName) {
-        this.patientFirstName = patientFirstName;
-    }
-
-    public String getPatientLastName() {
-        return patientLastName;
-    }
-
-    public void setPatientLastName(String patientLastName) {
-        this.patientLastName = patientLastName;
+    public void setPatientId(int patientId) {
+        this.patientId = patientId;
     }
 
     public String getMedicationName() {
@@ -114,8 +99,7 @@ public class Prescription {
     public String toString() {
         return "Prescription{" +
                 "prescriptionId=" + prescriptionId +
-                ", patientFirstName='" + patientFirstName + '\'' +
-                ", patientLastName='" + patientLastName + '\'' +
+                ", patientId=" + patientId +
                 ", medicationName='" + medicationName + '\'' +
                 ", prescriptionDate=" + prescriptionDate +
                 ", dosage='" + dosage + '\'' +

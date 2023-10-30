@@ -27,7 +27,7 @@ public class PrescriptionController {
     // injecting prescription service
     private PrescriptionRepoService prescriptionService;
 
-    @Autowired
+
     public PrescriptionController(PrescriptionRepoService thePrescriptionService){
         this.prescriptionService = thePrescriptionService;
     }
@@ -37,6 +37,8 @@ public class PrescriptionController {
         this.patientService = thePatientService;
     }
 
+
+    // show the form with the pre-populated patient information.
     @GetMapping("/showPresForm")
     public String showPresForm(@RequestParam(value="patientId") int theId, Model theModel){
         // create model attribute to bind the data from to
@@ -51,6 +53,8 @@ public class PrescriptionController {
         // send over to our form
         return "prescriptions/prescription-form";
     }
+
+
 
     @GetMapping("/prescribePrescription")
     public String prescribePrescription(Model theModel){

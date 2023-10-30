@@ -33,24 +33,25 @@
 
     <p>Address: <span th:text="${patient.address}"></span></p>
 
+    <!-- prescription fields -->
+
     <form action="@{/prescriptions/prescribePrescription}" th:object="${prescription}" method="POST">
 
-    <input type="hidden" th:field="*{prescriptionId}">
+        <input type="hidden" th:field="*{prescriptionId}">
+        <input type="hidden" th:field="*{patientId}">
 
-    <input type="text" th:field=""
+        <input type="text" th:field="*{medicationName}"
+           class="form-control mb-4 w-25" placeholder="Medication">>
 
-    <input type="text" th:field="*{lastName}"
-           class="form-control mb-4 w-25" placeholder="Last Name">
+        <input type="text" th:field="*{prescriptionDate}"
+           class="form-control mb-4 w-25" placeholder="Date of Prescription">
 
-    <input type="text" th:field="*{email}"
-           class="form-control mb-4 w-25" placeholder="Email">
+        <input type="text" th:field="*{dosage}"
+               class="form-control mb-4 w-25" placeholder="Dose">
+
+        <input type="text" th:field="*{prescribingDoctor}"
+               class="form-control mb-4 w-25" placeholder="Prescriber">
     <!-- submit button -->
-    <button type="submit" class="btn btn-info col-2">Save</button>
-
-<!--
-    <select th:field="tempMed : ${medications} th:value=${tempMed}" th:text="${tempMed}"/>
-    -->
-
     <button type="submit" class="btn btn-info col-2">Save</button>
 </form>
 
