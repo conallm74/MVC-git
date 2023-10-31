@@ -36,10 +36,10 @@
         <tr th:each="tempPatient : ${patient}">
 
             <td th:text="${tempPatient.patientId}" />
-            <td th:text="${tempPatient.firstName}" />
-            <td th:text="${tempPatient.lastName}" />
-            <td th:text="${tempPatient.email}" />
-            <td th:text="${tempPatient.address}" />
+            <td th:text="${tempPatient.patientFirstName}"></td>
+            <td th:text="${tempPatient.patientLastName}" />
+            <td th:text="${tempPatient.patientEmail}" />
+            <td th:text="${tempPatient.patientAddress}" />
 
 
             <!-- add a link for managing prescriptions -->

@@ -20,42 +20,41 @@
     <p class="h4 mb-4">Prescription Form</p>
 </div>
 
-<form action="@{/prescriptions/showPresForm}" th:object="${patient}" method="POST">
+<form action="@{/prescriptions/showPresForm}" th:object="${prescriptionDTO}" method="POST">
 
-    <!--Adding hidden from field to handle updates-->
-    <input type="hidden" th:field="*{patientId}">
+    <!--Adding hidden from field to handle updates -->
+        <input type="hidden" th:field="*{prescriptionDTO.patientId}">
 
-    <p>First Name: <span th:text="${patient.firstName}"></span></p>
 
-    <p>Last Name: <span th:text="${patient.lastName}"></span></p>
+    <p>First Name: <span th:text="${prescriptionDTO.firstName}"></span></p>
 
-    <p>Email: <span th:text="${patient.email}"></span></p>
+        <p>Last Name: <span th:text="${prescriptionDTO.lastName}"></span></p>
 
-    <p>Address: <span th:text="${patient.address}"></span></p>
+        <p>Email: <span th:text="${prescriptionDTO.email}"></span></p>
+
+        <p>Address: <span th:text="${prescriptionDTO.address}"></span></p>
 
     <!-- prescription fields -->
 
-    <form action="@{/prescriptions/prescribePrescription}" th:object="${prescription}" method="POST">
+    <form action="@{/prescriptions/prescribePrescription}" th:object="${prescriptionDTO}" method="POST">
 
-        <input type="hidden" th:field="*{prescriptionId}">
-        <input type="hidden" th:field="*{patientId}">
+            <input type="hidden" th:field="*{prescriptionId}">
+            <input type="hidden" th:field="*{patientId}">
 
-        <input type="text" th:field="*{medicationName}"
-           class="form-control mb-4 w-25" placeholder="Medication">>
+            <input type="text" th:field="*{medicationName}"
+               class="form-control mb-4 w-25" placeholder="Medication">>
 
-        <input type="text" th:field="*{prescriptionDate}"
-           class="form-control mb-4 w-25" placeholder="Date of Prescription">
+            <input type="text" th:field="*{prescriptionDate}"
+               class="form-control mb-4 w-25" placeholder="Date of Prescription">
 
-        <input type="text" th:field="*{dosage}"
-               class="form-control mb-4 w-25" placeholder="Dose">
+            <input type="text" th:field="*{dosage}"
+                   class="form-control mb-4 w-25" placeholder="Dose">
 
-        <input type="text" th:field="*{prescribingDoctor}"
-               class="form-control mb-4 w-25" placeholder="Prescriber">
+            <input type="text" th:field="*{prescribingDoctor}"
+                   class="form-control mb-4 w-25" placeholder="Prescriber">
     <!-- submit button -->
-    <button type="submit" class="btn btn-info col-2">Save</button>
-</form>
-
-
-
+        <button type="submit" class="btn btn-info col-2">Save</button>
+        </form>
+    </form>
 </body>
 </html>

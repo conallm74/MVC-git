@@ -36,6 +36,9 @@ public class Patient {
     }
 
     // mapping for DTO
+
+
+    /*
     public Patient(String patientFirstName, String patientLastName, String patientAddress) {
     }
 
@@ -46,6 +49,8 @@ public class Patient {
                 dto.getPatientAddress()
         ); return patient;
     }
+
+     */
 
     // getters and setters
 

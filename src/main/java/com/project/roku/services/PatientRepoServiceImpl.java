@@ -1,8 +1,11 @@
 package com.project.roku.services;
 
+import com.project.roku.DTO.PrescriptionDTO;
 import com.project.roku.dao.PatientRepository;
 import com.project.roku.entity.Employee;
 import com.project.roku.entity.Patient;
+import com.project.roku.medical_entities.Prescription;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,9 @@ public class PatientRepoServiceImpl implements PatientRepoService {
 
 
     private PatientRepository patientRepository;
+
+    // model mapper instance
+    private ModelMapper modelMapper;
 
     @Autowired
     public PatientRepoServiceImpl(PatientRepository thePatientRepository){
@@ -49,5 +55,17 @@ public class PatientRepoServiceImpl implements PatientRepoService {
     @Override
     public void deleteById(int theId) {
         patientRepository.deleteById(theId);
+    }
+
+    // mapping for DTO
+    public PatientRepoServiceImpl(PatientRepository patientRepository, ModelMapper theModelMapper){
+        this.patientRepository = patientRepository;
+        this.modelMapper = theModelMapper;
+    }
+    public PrescriptionDTO convertPatientToDTO(Patient patient){
+        return modelMapper.map(patient, PrescriptionDTO.class);
+    }
+    public Patient concertDTOToPatient(PrescriptionDTO dto){
+        return modelMapper.map(dto, Patient.class);
     }
 }

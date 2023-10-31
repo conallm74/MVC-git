@@ -19,6 +19,7 @@ public class PrescriptionServiceImpl implements PrescriptionRepoService{
 
     private PrescriptionRepo prescriptionRepo;
 
+    // model mapper instance
     private ModelMapper modelMapper;
 
     public PrescriptionServiceImpl(PrescriptionRepo thePrescriptionRepo){

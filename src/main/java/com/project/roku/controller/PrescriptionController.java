@@ -41,22 +41,28 @@ public class PrescriptionController {
 
     // show the form with the pre-populated patient information.
     @GetMapping("/showPresForm")
-    public String showPresForm(@RequestParam(value="patientId") int theId, Model theModel){
+    public String showPresForm(@RequestParam(value="prescriptionDTO.patientId") int theId, Model theModel){
         // create model attribute to bind the data from to
         Patient thePatient = patientService.findById(theId);
+        Prescription thePrescription = prescriptionService.findById(theId);
 
         // set the data to the DAO
         // Create a PrescriptionDTO and populate it with data from the entities
         PrescriptionDTO prescriptionDTO = new PrescriptionDTO();
-        prescriptionDTO.setPatientFirstName(prescription.get);
+        prescriptionDTO.setPatientFirstName(prescriptionDTO.getPatientFirstName());
+        prescriptionDTO.setPatientLastName(prescriptionDTO.getPatientLastName());
+        prescriptionDTO.setPatientAddress(prescriptionDTO.getPatientAddress());
+        prescriptionDTO.setPatientId(prescriptionDTO.getPatientId());
+        prescriptionDTO.setPrescriptionId(prescriptionDTO.getPrescriptionId());
+        prescriptionDTO.setPrescriptionDate(prescriptionDTO.getPrescriptionDate());
+        prescriptionDTO.setMedicationName(prescriptionDTO.getMedicationName());
+        prescriptionDTO.setDosage(prescriptionDTO.getMedicationName());
+        prescriptionDTO.setPrescribingDoctor(prescriptionDTO.getPrescribingDoctor());
 
-
-
-
-
+        theModel.addAttribute("prescriptionDTO", prescriptionDTO);
 
         // set the patient in the model to prepopulate the model/form
-        theModel.addAttribute("patient", thePatient);
+        // theModel.addAttribute("patient", thePatient);
 
         // adding the drop-down meds to the model
         // theModel.addAttribute("medications", meds);
@@ -67,11 +73,14 @@ public class PrescriptionController {
 
 
 
+    /*
     @GetMapping("/prescribePrescription")
     public String prescribePrescription(Model theModel){
         Prescription thePrescription = new Prescription();
 
-        theModel.addAttribute("prescription", theModel);
+        theModel.addAttribute("prescriptionDTO", theModel);
         return "prescriptions/prescription-form";
     }
+
+     */
 }
