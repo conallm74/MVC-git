@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,31 +40,15 @@ public class PrescriptionController {
     // show the form with the pre-populated patient information.
     @GetMapping("/showPresForm")
     public String showPresForm(@RequestParam(value = "patientId") int theId, Model theModel) {
-        // create model attribute to bind the data from to
+        // find the patient by the Id.
         Patient thePatient = patientService.findById(theId);
-
-
+        // create model attribute to bind the data from to
         // set the data to the DAO
-        // Create a PrescriptionDTO and populate it with data from the entities
+
         PrescriptionDTO prescriptionDTO = new PrescriptionDTO();
-        prescriptionDTO.setPatientFirstName(thePatient.getPatientFirstName());
-        prescriptionDTO.setPatientLastName(thePatient.getPatientLastName());
-        prescriptionDTO.setPatientAddress(thePatient.getPatientAddress());
 
-        prescriptionDTO.setPatientId(prescriptionDTO.getPatientId());
-        prescriptionDTO.setPrescriptionId(prescriptionDTO.getPrescriptionId());
-        prescriptionDTO.setPrescriptionDate(prescriptionDTO.getPrescriptionDate());
-        prescriptionDTO.setMedicationName(prescriptionDTO.getMedicationName());
-        prescriptionDTO.setDosage(prescriptionDTO.getMedicationName());
-        prescriptionDTO.setPrescribingDoctor(prescriptionDTO.getPrescribingDoctor());
-
+        // add the DTO to the model
         theModel.addAttribute("prescriptionDTO", prescriptionDTO);
-
-        // set the patient in the model to prepopulate the model/form
-        // theModel.addAttribute("patient", thePatient);
-
-        // adding the drop-down meds to the model
-        // theModel.addAttribute("medications", meds);
 
         // send over to our form
         return "prescriptions/prescription-form";
@@ -75,14 +57,14 @@ public class PrescriptionController {
 
 
 
-    /*
-    @GetMapping("/prescribePrescription")
-    public String prescribePrescription(Model theModel){
-        Prescription thePrescription = new Prescription();
+    // save the new prescription
+    @PostMapping("/prescribePrescription")
+    public String prescribePrescription(@ModelAttribute PrescriptionDTO prescriptionDTO){
+        // Convert the PrescriptionDTO back into a Prescription entity
+        Prescription newPrescription = prescriptionDTO.convertDTOToPrescription();
 
-        theModel.addAttribute("prescriptionDTO", theModel);
-        return "prescriptions/prescription-form";
+        // Save the new Prescription entity in the database
+        prescriptionService.save(newPrescription);
+        return "patients/patient-list";
     }
-
-     */
 }

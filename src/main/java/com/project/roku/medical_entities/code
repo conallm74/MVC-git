@@ -157,3 +157,39 @@ public class PrescriptionDTO {
             );
         }
 
+from the DTO class
+ /*
+    Your DTO should have an empty constructor, and each field should have getters and setters to make the mapping work
+     */
+    /*
+
+    public PrescriptionDTO(int prescriptionId, int patientId, String medicationName, Date prescriptionDate, String prescribingDoctor, String dosage,
+                            String patientFirstName, String patientLastName, String patientAddress
+    ) {
+        this.prescriptionId = prescriptionId;
+        this.patientId = patientId;
+        this.medicationName = medicationName;
+        this.prescriptionDate = prescriptionDate;
+        this.prescribingDoctor = prescribingDoctor;
+        this.dosage = dosage;
+        this.patientFirstName = patientFirstName;
+        this.patientLastName = patientLastName;
+        this.patientAddress = patientAddress;
+    }
+
+    PrescriptionDTO convertPrescriptiontoDTO(Prescription thePrescription, Patient thePatient){
+        PrescriptionDTO dto = new PrescriptionDTO(
+                thePrescription.getPrescriptionId(),
+                thePrescription.getPatientId(),
+                thePrescription.getMedicationName(),
+                thePrescription.getPrescriptionDate(),
+                thePrescription.getPrescribingDoctor(),
+                thePrescription.getDosage(),
+                thePatient.getPatientFirstName(),
+                thePatient.getPatientLastName(),
+                thePatient.getPatientAddress()
+        );
+        return dto;
+    }
+
+     */

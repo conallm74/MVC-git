@@ -33,42 +33,18 @@ public class PrescriptionDTO {
 
 
     public PrescriptionDTO(){}
-    // I commented this bit out because the instruction said
-    /*
-    Your DTO should have an empty constructor, and each field should have getters and setters to make the mapping work
-     */
-    /*
-
-    public PrescriptionDTO(int prescriptionId, int patientId, String medicationName, Date prescriptionDate, String prescribingDoctor, String dosage,
-                            String patientFirstName, String patientLastName, String patientAddress
-    ) {
-        this.prescriptionId = prescriptionId;
-        this.patientId = patientId;
-        this.medicationName = medicationName;
-        this.prescriptionDate = prescriptionDate;
-        this.prescribingDoctor = prescribingDoctor;
-        this.dosage = dosage;
-        this.patientFirstName = patientFirstName;
-        this.patientLastName = patientLastName;
-        this.patientAddress = patientAddress;
+    // Create a PrescriptionDTO and populate it with data from the entities
+    public void populateFromEntities(Prescription thePrescription, Patient thePatient) {
+        this.patientFirstName = thePatient.getPatientFirstName();
+        this.patientLastName = thePatient.getPatientLastName();
+        this.patientAddress = thePatient.getAddress();
+        this.patientId = thePatient.getPatientId();
+        this.prescriptionId = thePrescription.getPrescriptionId();
+        this.prescriptionDate = thePrescription.getPrescriptionDate();
+        this.medicationName = thePrescription.getMedicationName();
+        this.dosage = thePrescription.getDosage();
+        this.prescribingDoctor = thePrescription.getPrescribingDoctor();
     }
-
-    PrescriptionDTO convertPrescriptiontoDTO(Prescription thePrescription, Patient thePatient){
-        PrescriptionDTO dto = new PrescriptionDTO(
-                thePrescription.getPrescriptionId(),
-                thePrescription.getPatientId(),
-                thePrescription.getMedicationName(),
-                thePrescription.getPrescriptionDate(),
-                thePrescription.getPrescribingDoctor(),
-                thePrescription.getDosage(),
-                thePatient.getPatientFirstName(),
-                thePatient.getPatientLastName(),
-                thePatient.getPatientAddress()
-        );
-        return dto;
-    }
-
-     */
 
     // getters and setters from prescription
 
@@ -161,5 +137,18 @@ public class PrescriptionDTO {
                 ", patientLastName='" + patientLastName + '\'' +
                 ", patientAddress='" + patientAddress + '\'' +
                 '}';
+    }
+
+    public Prescription convertDTOToPrescription() {
+        Prescription prescription = new Prescription();
+        prescription.setPatientId(this.patientId);
+        prescription.setMedicationName(this.medicationName);
+        prescription.setPrescriptionDate(this.prescriptionDate);
+        prescription.setDosage(this.dosage);
+        prescription.setPrescribingDoctor(this.prescribingDoctor);
+
+        // Set any other fields as needed
+
+        return prescription;
     }
 }
