@@ -41,7 +41,7 @@ public class PrescriptionServiceImpl implements PrescriptionRepoService{
             thePrescription = result.get();
         }
         else {
-            throw new RuntimeException("Couldn't find patient by that prescrption by Id" + theId );
+            throw new RuntimeException("Couldn't find prescription by that prescription by Id" + theId );
         }
         return thePrescription;
     }

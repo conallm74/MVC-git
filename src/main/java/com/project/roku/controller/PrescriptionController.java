@@ -29,29 +29,30 @@ public class PrescriptionController {
     private PrescriptionRepoService prescriptionService;
 
 
-    public PrescriptionController(PrescriptionRepoService thePrescriptionService){
-        this.prescriptionService = thePrescriptionService;
-    }
-
     @Autowired
-    public PrescriptionController(PatientRepoService thePatientService){
-        this.patientService = thePatientService;
+    public PrescriptionController(
+            PatientRepoService patientService,
+            PrescriptionRepoService prescriptionService
+    ) {
+        this.patientService = patientService;
+        this.prescriptionService = prescriptionService;
     }
 
 
     // show the form with the pre-populated patient information.
     @GetMapping("/showPresForm")
-    public String showPresForm(@RequestParam(value="prescriptionDTO.patientId") int theId, Model theModel){
+    public String showPresForm(@RequestParam(value = "patientId") int theId, Model theModel) {
         // create model attribute to bind the data from to
         Patient thePatient = patientService.findById(theId);
-        Prescription thePrescription = prescriptionService.findById(theId);
+
 
         // set the data to the DAO
         // Create a PrescriptionDTO and populate it with data from the entities
         PrescriptionDTO prescriptionDTO = new PrescriptionDTO();
-        prescriptionDTO.setPatientFirstName(prescriptionDTO.getPatientFirstName());
-        prescriptionDTO.setPatientLastName(prescriptionDTO.getPatientLastName());
-        prescriptionDTO.setPatientAddress(prescriptionDTO.getPatientAddress());
+        prescriptionDTO.setPatientFirstName(thePatient.getPatientFirstName());
+        prescriptionDTO.setPatientLastName(thePatient.getPatientLastName());
+        prescriptionDTO.setPatientAddress(thePatient.getPatientAddress());
+
         prescriptionDTO.setPatientId(prescriptionDTO.getPatientId());
         prescriptionDTO.setPrescriptionId(prescriptionDTO.getPrescriptionId());
         prescriptionDTO.setPrescriptionDate(prescriptionDTO.getPrescriptionDate());
@@ -70,6 +71,7 @@ public class PrescriptionController {
         // send over to our form
         return "prescriptions/prescription-form";
     }
+
 
 
 
