@@ -10,9 +10,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
-
+@Slf4j
 @Controller
 @RequestMapping("/prescriptions")
 public class PrescriptionController {
@@ -44,8 +45,11 @@ public class PrescriptionController {
         Patient thePatient = patientService.findById(theId);
         // create model attribute to bind the data from to
         // set the data to the DAO
-
         PrescriptionDTO prescriptionDTO = new PrescriptionDTO();
+        prescriptionDTO.setPatientFirstName(thePatient.getPatientFirstName());
+        prescriptionDTO.setPatientLastName(thePatient.getPatientLastName());
+        prescriptionDTO.setPatientAddress(thePatient.getAddress());
+        prescriptionDTO.setPatientId(thePatient.getPatientId());
 
         // add the DTO to the model
         theModel.addAttribute("prescriptionDTO", prescriptionDTO);
@@ -57,14 +61,18 @@ public class PrescriptionController {
 
 
 
+
     // save the new prescription
     @PostMapping("/prescribePrescription")
-    public String prescribePrescription(@ModelAttribute PrescriptionDTO prescriptionDTO){
+    public String prescribePrescription(@ModelAttribute("prescriptionDTO") PrescriptionDTO thePrescriptionDTO){
+        log.info("Prescribe prescription method called.");
         // Convert the PrescriptionDTO back into a Prescription entity
-        Prescription newPrescription = prescriptionDTO.convertDTOToPrescription();
+        Prescription newPrescription = thePrescriptionDTO.convertDTOToPrescription();
 
         // Save the new Prescription entity in the database
         prescriptionService.save(newPrescription);
         return "patients/patient-list";
     }
+
+
 }

@@ -40,8 +40,6 @@ public class EmployeeRepoServiceImpl implements EmployeeRepoService {
     // no need for @Transactional as JpaRepo provides it out of the box 
     @Override
     public Employee save(Employee theUser) {
-
-
         return employeeRepository.save(theUser);
     }
 
