@@ -3,7 +3,15 @@ package com.project.roku.entity;
 
 import com.project.roku.DTO.PrescriptionDTO;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name="patients")
 public class Patient {
@@ -26,7 +34,7 @@ public class Patient {
     @Column(name="address")
     private String patientAddress;
 
-    public Patient(){}
+
 
     public Patient(String firstName, String lastName, String patientEmail, String patientAddress) {
         this.patientFirstName = firstName;

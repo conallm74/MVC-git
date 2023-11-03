@@ -43,36 +43,25 @@ public class PrescriptionController {
     public String showPresForm(@RequestParam(value = "patientId") int theId, Model theModel) {
         // find the patient by the Id.
         Patient thePatient = patientService.findById(theId);
-        // create model attribute to bind the data from to
-        // set the data to the DAO
-        PrescriptionDTO prescriptionDTO = new PrescriptionDTO();
-        prescriptionDTO.setPatientFirstName(thePatient.getPatientFirstName());
-        prescriptionDTO.setPatientLastName(thePatient.getPatientLastName());
-        prescriptionDTO.setPatientAddress(thePatient.getAddress());
-        prescriptionDTO.setPatientId(thePatient.getPatientId());
 
-        // add the DTO to the model
-        theModel.addAttribute("prescriptionDTO", prescriptionDTO);
+        // add the patient to the model
+        theModel.addAttribute("patient", thePatient);
+
+        // add the prescription
+        Prescription thePrescription = new Prescription();
+        theModel.addAttribute("prescription", thePrescription);
 
         // send over to our form
         return "prescriptions/prescription-form";
     }
 
-
-
-
-
     // save the new prescription
     @PostMapping("/prescribePrescription")
-    public String prescribePrescription(@ModelAttribute("prescriptionDTO") PrescriptionDTO thePrescriptionDTO){
-        log.info("Prescribe prescription method called.");
-        // Convert the PrescriptionDTO back into a Prescription entity
-        Prescription newPrescription = thePrescriptionDTO.convertDTOToPrescription();
+    public String prescribePrescription(@ModelAttribute("prescription") Prescription thePrescription){
 
+        // Prescription newPrescription = thePrescriptionDTO.convertDTOToPrescription();
         // Save the new Prescription entity in the database
-        prescriptionService.save(newPrescription);
-        return "patients/patient-list";
+        prescriptionService.save(thePrescription);
+        return "redirect:patients/patient-list";
     }
-
-
 }

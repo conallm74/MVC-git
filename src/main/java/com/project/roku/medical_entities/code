@@ -193,3 +193,29 @@ from the DTO class
     }
 
      */
+
+
+<form action="@{/prescriptions/prescribePrescription}" th:object="${patient}" method="POST">
+
+    <!-- Adding hidden form fields to handle updates -->
+    <input type="hidden" th:field="*{patientId}">
+
+
+    <p>Patient First Name: <span th:text="*{patientFirstName}"></span></p>
+    <p>Patient Last Name: <span th:text="*{patientLastName}"></span></p>
+    <p>Patient Address: <span th:text="*{patientAddress}"></span></p>
+
+    <div th:object="${prescription}">
+    <!-- Prescription fields -->
+        <input type="hidden" th:field="*{prescriptionId}">
+        <input type="hidden" th:field="*{patientId}">
+    <input type="text" th:field="*{medicationName}" class="form-control mb-4 w-25" placeholder="Medication">
+    <input type="text" th:field="*{prescriptionDate}" class="form-control mb-4 w-25" placeholder="Date of Prescription">
+    <input type="text" th:field="*{dosage}" class="form-control mb-4 w-25" placeholder="Dose">
+    <input type="text" th:field="*{prescribingDoctor}" class="form-control mb-4 w-25" placeholder="Prescriber">
+    </div>
+    <!-- enter a radio button for send to pharmacy or send to patient (QRCode) -->
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-info col-2">Submit</button>
+</form>
