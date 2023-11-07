@@ -1,7 +1,9 @@
 package com.project.roku.controller;
 
 import com.project.roku.DTO.PrescriptionDTO;
+import com.project.roku.dao.PharmacyRepo;
 import com.project.roku.entity.Patient;
+import com.project.roku.medical_entities.Pharmacy;
 import com.project.roku.medical_entities.Prescription;
 import com.project.roku.services.PatientRepoService;
 import com.project.roku.services.PrescriptionRepoService;
@@ -51,6 +53,15 @@ public class PrescriptionController {
         Prescription thePrescription = new Prescription();
         theModel.addAttribute("prescription", thePrescription);
 
+        // retrieving the pharmacies for the drop down menu
+        List<Pharmacy> pharmacies = PharmacyRepo.findAllPharmacies();
+        theModel.addAttribute("pharmacies", pharmacies);
+
+        /*
+         List<Employee> managers = service.findAllManagers();
+        model.addAttribute("managers", managers);
+         */
+
         // send over to our form
         return "prescriptions/prescription-form";
     }
@@ -64,4 +75,19 @@ public class PrescriptionController {
         prescriptionService.save(thePrescription);
         return "redirect:patients/patient-list";
     }
+
+    /*
+    Get Mapping for the drop-down menu
+     */
+    // @GetMapping("/showDropDown")
+    // public String
+
+
+
+
+
+
+
+
+
 }
