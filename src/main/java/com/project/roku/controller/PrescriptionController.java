@@ -6,6 +6,7 @@ import com.project.roku.entity.Patient;
 import com.project.roku.medical_entities.Pharmacy;
 import com.project.roku.medical_entities.Prescription;
 import com.project.roku.services.PatientRepoService;
+import com.project.roku.services.PharmaRepoService;
 import com.project.roku.services.PrescriptionRepoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,12 +30,18 @@ public class PrescriptionController {
     // injecting prescription service
     private PrescriptionRepoService prescriptionService;
 
+    private PharmacyRepo pharmaRepoService;
+
+
 
     @Autowired
     public PrescriptionController(
             PatientRepoService patientService,
-            PrescriptionRepoService prescriptionService
+            PrescriptionRepoService prescriptionService,
+            PharmacyRepo pharmaRepoService
     ) {
+        // this.pharmaRepoService = pharmaRepoService;
+        this.pharmaRepoService = pharmaRepoService;
         this.patientService = patientService;
         this.prescriptionService = prescriptionService;
     }
@@ -54,7 +61,7 @@ public class PrescriptionController {
         theModel.addAttribute("prescription", thePrescription);
 
         // retrieving the pharmacies for the drop down menu
-        List<Pharmacy> pharmacies = PharmacyRepo.findAllPharmacies();
+        List<Pharmacy> pharmacies = pharmaRepoService.findAllPharmacies();
         theModel.addAttribute("pharmacies", pharmacies);
 
         /*

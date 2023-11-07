@@ -1,6 +1,9 @@
 package com.project.roku.medical_entities;
 
 import jakarta.persistence.*;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 @Entity
 @Table(name="pharmacies")
