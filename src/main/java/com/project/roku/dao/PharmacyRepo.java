@@ -10,9 +10,7 @@ import java.util.List;
 
 public interface PharmacyRepo extends JpaRepository<Pharmacy, Integer> {
     @Query(value = "SELECT pharmacy_name FROM pharmacies)", nativeQuery = true)
-    public static List<Pharmacy> findAllPharmacies() {
-        return findAllPharmacies();
-    }
+    public List<Pharmacy> findAllPharmacies();
 }
 
 

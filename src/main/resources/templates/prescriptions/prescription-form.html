@@ -43,22 +43,41 @@
     <input type="radio" value="Send to Pharmacy" name="sendTo" id="sendToPharmacy"> Send to Pharmacy
 
     <div id="pharmacyDetails" style="display: none;">
-        <input type="text" name="pharmacyName" placeholder="Pharmacy Name">
-        <input type="text" name="pharmacyAddress" placeholder="Pharmacy Address">
+        <select class="form-control" th:field="{pharmacy}" id="pharmacies">
+            <option th:each="pharmacy : ${pharmacies}" : th:value="pharmacy" th:text="${pharmacy}"></option>
+        </select>
     </div>
     <!-- Submit button -->
     <button type="submit" class="btn btn-info col-2">Submit</button>
 </form>
 <script>
-    document.querySelector('input[name="sendTo"]').addEventListener('change', function() {
-        var pharmacyDetailsDiv = document.getElementById('pharmacyDetails');
-        if (this.value === 'Send to Pharmacy') {
+    // Select the radio input and the pharmacy details div
+    var sendToPharmacyRadio = document.getElementById('sendToPharmacy');
+    var pharmacyDetailsDiv = document.getElementById('pharmacyDetails');
+
+    // Initial visibility state based on the checked status of the radio input
+    if (sendToPharmacyRadio.checked) {
+        pharmacyDetailsDiv.style.display = 'block';
+    } else {
+        pharmacyDetailsDiv.style.display = 'none';
+    }
+
+    // Add an event listener to the radio input
+    sendToPharmacyRadio.addEventListener('change', function() {
+        if (this.checked) {
             pharmacyDetailsDiv.style.display = 'block';
         } else {
             pharmacyDetailsDiv.style.display = 'none';
         }
     });
 </script>
+
+
+
+
+
+
+
 
 
 
