@@ -30,9 +30,6 @@ public class PrescriptionController {
     // injecting prescription service
     private PrescriptionRepoService prescriptionService;
 
-    // instance of the DAO
-    private PharmacyRepo pharmaRepoDaoService;
-
     private PharmaRepoService pharmacyRepoService;
 
 
@@ -41,11 +38,9 @@ public class PrescriptionController {
     public PrescriptionController(
             PatientRepoService patientService,
             PrescriptionRepoService prescriptionService,
-            PharmacyRepo pharmaRepoDaoService,
             PharmaRepoService pharmacyRepoService
     ) {
         this.pharmacyRepoService = pharmacyRepoService;
-        this.pharmaRepoDaoService = pharmaRepoDaoService;
         this.patientService = patientService;
         this.prescriptionService = prescriptionService;
     }
@@ -64,7 +59,7 @@ public class PrescriptionController {
         Prescription thePrescription = new Prescription();
         theModel.addAttribute("prescription", thePrescription);
 
-        // retrieving the pharmacies for the drop down menu
+        // retrieving the pharmacies for the drop-down menu
         List<String> pharmacies = pharmacyRepoService.findAllPharmacies();
         theModel.addAttribute("pharmacies", pharmacies);
 

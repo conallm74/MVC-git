@@ -43,8 +43,8 @@
     <input type="radio" value="Send to Pharmacy" name="sendTo" id="sendToPharmacy"> Send to Pharmacy
 
     <div id="pharmacyDetails" style="display: none;">
-        <select class="form-control" th:field="{pharmacy}" id="pharmacies">
-            <option th:each="pharmacy : ${pharmacies}" : th:value="pharmacy" th:text="${pharmacy}"></option>
+        <select class="form-control" th:field="{pharmacyName}" id="pharmaciesDropdown">
+            <option th:each="tempPharmacy : ${pharmacies}" : th:value="tempPharmacy" th:text="${tempPharmacy}"></option>
         </select>
     </div>
     <!-- Submit button -->

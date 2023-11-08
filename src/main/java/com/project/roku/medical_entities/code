@@ -219,3 +219,12 @@ from the DTO class
     <!-- Submit button -->
     <button type="submit" class="btn btn-info col-2">Submit</button>
 </form>
+
+
+
+
+<div id="pharmacyDetails" style="display: none;">
+        <select class="form-control" th:field="{pharmacies}" id="pharmaciesDropdown">
+            <option th:each="pharmacy : ${pharmacyName}" : th:value="pharmacy" th:text="${pharmacyName}"></option>
+        </select>
+    </div>
