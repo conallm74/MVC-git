@@ -15,6 +15,8 @@ public interface PharmaRepoService {
 
     void deleteById(int theId);
 
+    List<String> findAllPharmacies();
+
     /*
     @Query(value="SELECT pharmacy_name FROM pharmacies)", nativeQuery = true)
     public List<Pharmacy> findAllPharmacies();

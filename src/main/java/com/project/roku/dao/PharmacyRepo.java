@@ -11,8 +11,7 @@ import java.util.List;
 @Repository
 public interface PharmacyRepo extends JpaRepository<Pharmacy, Integer> {
     @Query(value = "SELECT pharmacy_name FROM pharmacies", nativeQuery = true)
-    public List<Pharmacy> findAllPharmacies();
-
+    public List<String> findAllPharmacies();
 }
 
 

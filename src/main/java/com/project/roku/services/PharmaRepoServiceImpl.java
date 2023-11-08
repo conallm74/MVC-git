@@ -3,10 +3,12 @@ package com.project.roku.services;
 import com.project.roku.dao.PharmacyRepo;
 import com.project.roku.medical_entities.Pharmacy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PharmaRepoServiceImpl implements PharmaRepoService{
 
     private PharmacyRepo pharmacyRepo;
@@ -45,11 +47,8 @@ public class PharmaRepoServiceImpl implements PharmaRepoService{
         pharmacyRepo.deleteById(theId);
     }
 
-    /*
     @Override
-    public List<Pharmacy> findAllPharmacies() {
+    public List<String> findAllPharmacies() {
         return pharmacyRepo.findAllPharmacies();
     }
-
-     */
 }
