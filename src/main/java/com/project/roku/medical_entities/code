@@ -228,3 +228,11 @@ from the DTO class
             <option th:each="pharmacy : ${pharmacyName}" : th:value="pharmacy" th:text="${pharmacyName}"></option>
         </select>
     </div>
+
+     <!--
+            <select class="form-control" th:field="*{pharmacyName}">
+                <option th:each="tempPharmacy : ${pharmacies}" th:value="${tempPharmacy.pharmacyName}" th:text="${tempPharmacy.pharmacyName}"></option>
+            </select>
+            -->
+
+                    <option th:each="pharmacy : ${pharmacies}" th:value="${pharmacy.pharmacyName}" th:text="${pharmacy.pharmacyName}"></option>

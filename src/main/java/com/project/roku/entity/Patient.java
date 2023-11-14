@@ -2,11 +2,13 @@ package com.project.roku.entity;
 
 
 import com.project.roku.DTO.PrescriptionDTO;
+import com.project.roku.medical_entities.Pharmacy;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Data
 @AllArgsConstructor
@@ -42,6 +44,7 @@ public class Patient {
         this.patientEmail = patientEmail;
         this.patientAddress = patientAddress;
     }
+
 
     // mapping for DTO
 

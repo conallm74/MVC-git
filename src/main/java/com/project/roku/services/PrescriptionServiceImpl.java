@@ -5,6 +5,7 @@ import com.project.roku.dao.PatientRepository;
 import com.project.roku.dao.PrescriptionRepo;
 import com.project.roku.entity.Employee;
 import com.project.roku.entity.Patient;
+import com.project.roku.medical_entities.Pharmacy;
 import com.project.roku.medical_entities.Prescription;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import java.util.Optional;
 @Service
 public class PrescriptionServiceImpl implements PrescriptionRepoService{
 
+    @Autowired
     private PrescriptionRepo prescriptionRepo;
 
     // model mapper instance
@@ -72,4 +74,5 @@ public class PrescriptionServiceImpl implements PrescriptionRepoService{
     public Prescription convertDTOToPrescription(PrescriptionDTO dto) {
         return modelMapper.map(dto, Prescription.class);
     }
+
 }

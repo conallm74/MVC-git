@@ -1,12 +1,11 @@
 package com.project.roku.controller;
 
-import com.project.roku.DTO.PrescriptionDTO;
-import com.project.roku.dao.PharmacyRepo;
 import com.project.roku.entity.Patient;
 import com.project.roku.medical_entities.Pharmacy;
 import com.project.roku.medical_entities.Prescription;
 import com.project.roku.services.PatientRepoService;
 import com.project.roku.services.PharmaRepoService;
+import com.project.roku.services.PharmaRepoServiceImpl;
 import com.project.roku.services.PrescriptionRepoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,7 +31,8 @@ public class PrescriptionController {
 
     private PharmaRepoService pharmacyRepoService;
 
-
+    @Autowired
+    PharmaRepoServiceImpl serviceImpl;
 
     @Autowired
     public PrescriptionController(
@@ -60,8 +60,10 @@ public class PrescriptionController {
         theModel.addAttribute("prescription", thePrescription);
 
         // retrieving the pharmacies for the drop-down menu
-        List<String> pharmacies = pharmacyRepoService.findAllPharmacies();
-        theModel.addAttribute("pharmacies", pharmacies);
+        List<Pharmacy> pharmacyNames = serviceImpl.findAllPharmacies();
+        theModel.addAttribute("pharmacies", pharmacyNames);
+
+
 
 
         // send over to our form

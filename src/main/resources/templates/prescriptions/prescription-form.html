@@ -42,11 +42,20 @@
     <!-- enter a radio button for send to pharmacy or send to patient (QRCode) -->
     <input type="radio" value="Send to Pharmacy" name="sendTo" id="sendToPharmacy"> Send to Pharmacy
 
+
+    <div th:object="${pharmacies}">
     <div id="pharmacyDetails" style="display: none;">
-        <select class="form-control" th:field="{pharmacyName}" id="pharmaciesDropdown">
-            <option th:each="tempPharmacy : ${pharmacies}" : th:value="tempPharmacy" th:text="${tempPharmacy}"></option>
+        <select class="form-control" id="pharmaciesDropdown">
+            <option th:each="tempPharmacy : ${pharmacies}" th:value="${tempPharmacy.pharmacyName}" th:text="${tempPharmacy.pharmacyName}"></option>
         </select>
+        <!--
+        <select class="form-control" th:field="*{pharmacyName}">
+            <option th:each="tempPharmacy : ${pharmacies}" th:value="${tempPharmacy.pharmacyName}" th:text="${tempPharmacy.pharmacyName}"></option>
+        </select>
+        -->
     </div>
+    </div>
+
     <!-- Submit button -->
     <button type="submit" class="btn btn-info col-2">Submit</button>
 </form>

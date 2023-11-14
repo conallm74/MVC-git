@@ -1,6 +1,6 @@
 package com.project.roku.services;
 
-import com.project.roku.dao.PharmacyRepo;
+import com.project.roku.dao.PharmacyRepoDao;
 import com.project.roku.medical_entities.Pharmacy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,10 +11,11 @@ import java.util.Optional;
 @Service
 public class PharmaRepoServiceImpl implements PharmaRepoService{
 
-    private PharmacyRepo pharmacyRepo;
+    @Autowired
+    private PharmacyRepoDao pharmacyRepo;
 
     @Autowired
-    public PharmaRepoServiceImpl(PharmacyRepo thePharmacyRepo){
+    public PharmaRepoServiceImpl(PharmacyRepoDao thePharmacyRepo){
         pharmacyRepo = thePharmacyRepo;
     }
 
@@ -48,7 +49,9 @@ public class PharmaRepoServiceImpl implements PharmaRepoService{
     }
 
     @Override
-    public List<String> findAllPharmacies() {
-        return pharmacyRepo.findAllPharmacies();
+    public List<Pharmacy> findAllPharmacies() {
+        return pharmacyRepo.findAllPharmacyNames();
     }
+
+
 }

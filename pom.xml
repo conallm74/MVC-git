@@ -101,6 +101,13 @@
 			<version>2.15.0.RELEASE</version>
 		</dependency>
 
+		<!-- Dependencies for testing -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>5.10.0</version>
+			<scope>test</scope>
+		</dependency>
 
 
 		<!-- Dependency for the model mapper -->

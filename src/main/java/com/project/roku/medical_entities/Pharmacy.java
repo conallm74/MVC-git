@@ -22,9 +22,15 @@ public class Pharmacy {
 
     // constructors
 
-    public Pharmacy(String pharmacyName, String pharmacyAddress) {
+    public Pharmacy(int pharmacyId, String pharmacyName, String pharmacyAddress) {
+        this.pharmacyId = pharmacyId;
         this.pharmacyName = pharmacyName;
         this.pharmacyAddress = pharmacyAddress;
+    }
+
+    public Pharmacy(){}
+
+    public Pharmacy(String pharmacyName) {
     }
 
     // getters and setters
@@ -52,6 +58,7 @@ public class Pharmacy {
     public void setPharmacyAddress(String pharmacyAddress) {
         this.pharmacyAddress = pharmacyAddress;
     }
+
 
     // to string
 
