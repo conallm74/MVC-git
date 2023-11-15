@@ -3,11 +3,13 @@ package com.project.roku.DTO;
 
 import com.project.roku.entity.Patient;
 import com.project.roku.medical_entities.Prescription;
+import org.springframework.context.annotation.Bean;
 
 import java.sql.Date;
 import java.time.LocalDate;
 
 // creating a DTO for data transfer and for easier data entry
+
 public class PrescriptionDTO {
 
     // fields from Prescription

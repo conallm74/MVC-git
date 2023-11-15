@@ -20,12 +20,16 @@ public class Pharmacy {
     @Column(name="pharmacy_address")
     private String pharmacyAddress;
 
+    @Column(name="pharmacy_recipient_id")
+    private int pharmacyRecipientId;
     // constructors
 
-    public Pharmacy(int pharmacyId, String pharmacyName, String pharmacyAddress) {
+
+    public Pharmacy(int pharmacyId, String pharmacyName, String pharmacyAddress, int pharmacyRecipientId) {
         this.pharmacyId = pharmacyId;
         this.pharmacyName = pharmacyName;
         this.pharmacyAddress = pharmacyAddress;
+        this.pharmacyRecipientId = pharmacyRecipientId;
     }
 
     public Pharmacy(){}
@@ -59,6 +63,14 @@ public class Pharmacy {
         this.pharmacyAddress = pharmacyAddress;
     }
 
+    public int getPharmacyRecipientId() {
+        return pharmacyRecipientId;
+    }
+
+    public void setPharmacyRecipientId(int pharmacyRecipientId) {
+        this.pharmacyRecipientId = pharmacyRecipientId;
+    }
+
 
     // to string
 
@@ -68,6 +80,7 @@ public class Pharmacy {
                 "pharmacyId=" + pharmacyId +
                 ", pharmacyName='" + pharmacyName + '\'' +
                 ", pharmacyAddress='" + pharmacyAddress + '\'' +
+                ", pharmacyRecipientId=" + pharmacyRecipientId +
                 '}';
     }
 }

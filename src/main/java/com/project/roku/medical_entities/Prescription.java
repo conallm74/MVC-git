@@ -34,16 +34,20 @@ public class Prescription {
     @Column(name="prescribing_doctor")
     private String prescribingDoctor;
 
+    @Column(name="fk_pharmacy_recipient")
+    private String pharmacyRecipientId;
+
     // constructors
     public Prescription(){}
 
-    public Prescription(int prescriptionId, int patientId, String medicationName, Date prescriptionDate, String dosage, String prescribingDoctor) {
+    public Prescription(int prescriptionId, int patientId, String medicationName, Date prescriptionDate, String dosage, String prescribingDoctor, String pharmacyRecipientId) {
         this.prescriptionId = prescriptionId;
         this.patientId = patientId;
         this.medicationName = medicationName;
         this.prescriptionDate = prescriptionDate;
         this.dosage = dosage;
         this.prescribingDoctor = prescribingDoctor;
+        this.pharmacyRecipientId = pharmacyRecipientId;
     }
 
     /*
@@ -63,7 +67,6 @@ public class Prescription {
      */
     // getters and setters
 
-
     public int getPrescriptionId() {
         return prescriptionId;
     }
@@ -71,7 +74,6 @@ public class Prescription {
     public void setPrescriptionId(int prescriptionId) {
         this.prescriptionId = prescriptionId;
     }
-
 
     public int getPatientId() {
         return patientId;
@@ -113,6 +115,13 @@ public class Prescription {
         this.prescribingDoctor = prescribingDoctor;
     }
 
+    public String getPharmacyRecipientId() {
+        return pharmacyRecipientId;
+    }
+
+    public void setPharmacyRecipientId(String pharmacyRecipientId) {
+        this.pharmacyRecipientId = pharmacyRecipientId;
+    }
 
 
     // to string
@@ -127,7 +136,7 @@ public class Prescription {
                 ", prescriptionDate=" + prescriptionDate +
                 ", dosage='" + dosage + '\'' +
                 ", prescribingDoctor='" + prescribingDoctor + '\'' +
+                ", pharmacyRecipientId='" + pharmacyRecipientId + '\'' +
                 '}';
     }
-
 }

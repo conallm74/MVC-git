@@ -74,7 +74,13 @@ public class PrescriptionController {
     @PostMapping("/prescribePrescription")
     public String prescribePrescription(@ModelAttribute("prescription") Prescription thePrescription){
 
-        // Prescription newPrescription = thePrescriptionDTO.convertDTOToPrescription();
+        // convert thePatient to the DTO
+
+        // convert the prescription to the DTo
+
+        // convert the pharmacyName?
+
+        // Prescription newPrescription = thePrescription.convertDTOToPrescription();
         // Save the new Prescription entity in the database
         prescriptionService.save(thePrescription);
         return "redirect:patients/patient-list";
