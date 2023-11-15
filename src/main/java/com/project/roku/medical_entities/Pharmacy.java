@@ -20,16 +20,16 @@ public class Pharmacy {
     @Column(name="pharmacy_address")
     private String pharmacyAddress;
 
-    @Column(name="pharmacy_recipient_id")
-    private int pharmacyRecipientId;
+    @OneToMany(mappedBy = "pharmacies")
+    private List<Prescription> prescriptions;
     // constructors
 
 
-    public Pharmacy(int pharmacyId, String pharmacyName, String pharmacyAddress, int pharmacyRecipientId) {
+    public Pharmacy(int pharmacyId, String pharmacyName, String pharmacyAddress, List<Prescription> prescriptions) {
         this.pharmacyId = pharmacyId;
         this.pharmacyName = pharmacyName;
         this.pharmacyAddress = pharmacyAddress;
-        this.pharmacyRecipientId = pharmacyRecipientId;
+        this.prescriptions = prescriptions;
     }
 
     public Pharmacy(){}
@@ -63,16 +63,16 @@ public class Pharmacy {
         this.pharmacyAddress = pharmacyAddress;
     }
 
-    public int getPharmacyRecipientId() {
-        return pharmacyRecipientId;
+    public List<Prescription> getPrescriptions() {
+        return prescriptions;
     }
 
-    public void setPharmacyRecipientId(int pharmacyRecipientId) {
-        this.pharmacyRecipientId = pharmacyRecipientId;
+    public void setPrescriptions(List<Prescription> prescriptions) {
+        this.prescriptions = prescriptions;
     }
-
 
     // to string
+
 
     @Override
     public String toString() {
@@ -80,7 +80,7 @@ public class Pharmacy {
                 "pharmacyId=" + pharmacyId +
                 ", pharmacyName='" + pharmacyName + '\'' +
                 ", pharmacyAddress='" + pharmacyAddress + '\'' +
-                ", pharmacyRecipientId=" + pharmacyRecipientId +
+                ", prescriptions=" + prescriptions +
                 '}';
     }
 }

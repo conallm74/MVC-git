@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="prescription")
@@ -34,20 +35,21 @@ public class Prescription {
     @Column(name="prescribing_doctor")
     private String prescribingDoctor;
 
-    @Column(name="fk_pharmacy_recipient")
-    private String pharmacyRecipientId;
+    @ManyToOne
+    @JoinColumn(name = "fk_pharmacy_recipient")
+    private Pharmacy pharmacies;
 
     // constructors
     public Prescription(){}
 
-    public Prescription(int prescriptionId, int patientId, String medicationName, Date prescriptionDate, String dosage, String prescribingDoctor, String pharmacyRecipientId) {
+    public Prescription(int prescriptionId, int patientId, String medicationName, Date prescriptionDate, String dosage, String prescribingDoctor, Pharmacy pharmacies) {
         this.prescriptionId = prescriptionId;
         this.patientId = patientId;
         this.medicationName = medicationName;
         this.prescriptionDate = prescriptionDate;
         this.dosage = dosage;
         this.prescribingDoctor = prescribingDoctor;
-        this.pharmacyRecipientId = pharmacyRecipientId;
+        this.pharmacies = pharmacies;
     }
 
     /*
@@ -115,14 +117,13 @@ public class Prescription {
         this.prescribingDoctor = prescribingDoctor;
     }
 
-    public String getPharmacyRecipientId() {
-        return pharmacyRecipientId;
+    public Pharmacy getPharmacy() {
+        return pharmacies;
     }
 
-    public void setPharmacyRecipientId(String pharmacyRecipientId) {
-        this.pharmacyRecipientId = pharmacyRecipientId;
+    public void setPharmacy(Pharmacy pharmacy) {
+        this.pharmacies = pharmacy;
     }
-
 
     // to string
 
@@ -136,7 +137,7 @@ public class Prescription {
                 ", prescriptionDate=" + prescriptionDate +
                 ", dosage='" + dosage + '\'' +
                 ", prescribingDoctor='" + prescribingDoctor + '\'' +
-                ", pharmacyRecipientId='" + pharmacyRecipientId + '\'' +
+                ", pharmacy=" + pharmacies +
                 '}';
     }
 }
