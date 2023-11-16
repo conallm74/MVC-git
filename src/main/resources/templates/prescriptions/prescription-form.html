@@ -53,7 +53,7 @@
     <div id="pharmacyDetails" style="display: none;">
 
         <select class="form-control" id="pharmaciesDropdown" name="pharmacyRecipientId"onchange="updateRecipientId()">
-            <option th:each="tempPharmacy : ${pharmacies}" th:value="${tempPharmacy[1]}" th:text="${tempPharmacy[0] + ' - ' + tempPharmacy[1]}"></option>
+            <option th:each="tempPharmacy : ${pharmacies}" th:value="${tempPharmacy[1]}" th:text="${tempPharmacy[0] + ' - ' + tempPharmacy[1]}" th:data-recipient-id="${tempPharmacy[1]}"></option>
         </select>
 
     </div>
@@ -90,11 +90,9 @@
         }
     });
 function updateRecipientId() {
-    // Get the selected value from the dropdown
-    var selectedRecipientId = document.getElementById('pharmaciesDropdown').value;
-
-    // Set the value of the hidden field
-    document.getElementById('hiddenRecipientId').value = selectedRecipientId;
+    var selectedOption = document.getElementById('pharmaciesDropdown').options[document.getElementById('pharmaciesDropdown').selectedIndex];
+    var selectedRecipientId = selectedOption.dataset.recipientId;
+    document.getElementById('recipientId').value = selectedRecipientId;
 }
 
 

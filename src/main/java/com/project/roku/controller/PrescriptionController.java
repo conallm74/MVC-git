@@ -1,7 +1,6 @@
 package com.project.roku.controller;
 
 import com.project.roku.entity.Patient;
-import com.project.roku.medical_entities.Pharmacy;
 import com.project.roku.medical_entities.Prescription;
 import com.project.roku.services.patient_services.PatientRepoService;
 import com.project.roku.services.pharmacy_services.PharmaRepoService;
@@ -71,13 +70,10 @@ public class PrescriptionController {
 
     // save the new prescription
     @PostMapping("/prescribePrescription")
-    public String prescribePrescription(@ModelAttribute("prescription") Prescription thePrescription){
-        Prescription prescription = new Prescription();
-        // convert thePatient to the DTO
-        System.out.println("Received Pharmacy Recipient ID: " + prescription.getPharmacyRecipientId());
-
-        Pharmacy pharmacy = new Pharmacy();
-        System.out.println(pharmacy.getPharmacyName());
+    public String prescribePrescription(@ModelAttribute("prescription") Prescription thePrescription,
+                                        @RequestParam("pharmacyRecipientId") Integer pharmacyRecipientId){
+        // Set the pharmacyRecipientId in the Prescription object
+        thePrescription.setPharmacyRecipientId(pharmacyRecipientId);
 
         // convert the prescription to the DTo
 
@@ -94,13 +90,5 @@ public class PrescriptionController {
      */
     // @GetMapping("/showDropDown")
     // public String
-
-
-
-
-
-
-
-
 
 }
