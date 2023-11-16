@@ -236,3 +236,28 @@ from the DTO class
             -->
 
                     <option th:each="pharmacy : ${pharmacies}" th:value="${pharmacy.pharmacyName}" th:text="${pharmacy.pharmacyName}"></option>
+
+
+
+
+
+
+ function updateRecipientId() {
+            var selectedPharmacy = document.getElementById('pharmaciesDropdown');
+            var recipientIdField = document.getElementById('pharmacyRecipientId');
+            recipientIdField.value = selectedPharmacy.value;
+        }
+
+
+
+
+   function updateRecipientId() {
+    var dropdown = document.getElementById('pharmaciesDropdown');
+    var hiddenInput = document.getElementById('recipientIdInput'); // Add an id to your hidden input
+
+    // Assuming each option value is the pharmacy ID
+    var selectedPharmacyId = dropdown.options[dropdown.selectedIndex].value;
+
+    // Set the selected pharmacy ID to the hidden input
+    hiddenInput.Value = selectedPharmacyId;
+}

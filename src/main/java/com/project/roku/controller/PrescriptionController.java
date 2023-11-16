@@ -3,16 +3,15 @@ package com.project.roku.controller;
 import com.project.roku.entity.Patient;
 import com.project.roku.medical_entities.Pharmacy;
 import com.project.roku.medical_entities.Prescription;
-import com.project.roku.services.PatientRepoService;
-import com.project.roku.services.PharmaRepoService;
-import com.project.roku.services.PharmaRepoServiceImpl;
-import com.project.roku.services.PrescriptionRepoService;
+import com.project.roku.services.patient_services.PatientRepoService;
+import com.project.roku.services.pharmacy_services.PharmaRepoService;
+import com.project.roku.services.pharmacy_services.PharmaRepoServiceImpl;
+import com.project.roku.services.prescription_services.PrescriptionRepoService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 @Slf4j
@@ -60,7 +59,7 @@ public class PrescriptionController {
         theModel.addAttribute("prescription", thePrescription);
 
         // retrieving the pharmacies for the drop-down menu
-        List<Pharmacy> pharmacyNames = serviceImpl.findAllPharmacies();
+        List<Object[]> pharmacyNames = serviceImpl.findAllPharmacies();
         theModel.addAttribute("pharmacies", pharmacyNames);
 
 
@@ -73,8 +72,12 @@ public class PrescriptionController {
     // save the new prescription
     @PostMapping("/prescribePrescription")
     public String prescribePrescription(@ModelAttribute("prescription") Prescription thePrescription){
-
+        Prescription prescription = new Prescription();
         // convert thePatient to the DTO
+        System.out.println("Received Pharmacy Recipient ID: " + prescription.getPharmacyRecipientId());
+
+        Pharmacy pharmacy = new Pharmacy();
+        System.out.println(pharmacy.getPharmacyName());
 
         // convert the prescription to the DTo
 

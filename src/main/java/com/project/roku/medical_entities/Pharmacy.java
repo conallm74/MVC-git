@@ -1,7 +1,6 @@
 package com.project.roku.medical_entities;
 
 import jakarta.persistence.*;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -20,16 +19,16 @@ public class Pharmacy {
     @Column(name="pharmacy_address")
     private String pharmacyAddress;
 
-    @OneToMany(mappedBy = "pharmacies")
-    private List<Prescription> prescriptions;
+    @OneToMany(mappedBy = "pharmacyRecipientId")
+    public List<Prescription> pharmacyRecipientId;
     // constructors
 
 
-    public Pharmacy(int pharmacyId, String pharmacyName, String pharmacyAddress, List<Prescription> prescriptions) {
+    public Pharmacy(int pharmacyId, String pharmacyName, String pharmacyAddress, List<Prescription> pharmacyRecipientId) {
         this.pharmacyId = pharmacyId;
         this.pharmacyName = pharmacyName;
         this.pharmacyAddress = pharmacyAddress;
-        this.prescriptions = prescriptions;
+        this.pharmacyRecipientId = pharmacyRecipientId;
     }
 
     public Pharmacy(){}
@@ -63,12 +62,12 @@ public class Pharmacy {
         this.pharmacyAddress = pharmacyAddress;
     }
 
-    public List<Prescription> getPrescriptions() {
-        return prescriptions;
+    public List<Prescription> getFkPharmacyRecipientId() {
+        return pharmacyRecipientId;
     }
 
-    public void setPrescriptions(List<Prescription> prescriptions) {
-        this.prescriptions = prescriptions;
+    public void setFkPharmacyRecipientId(List<Prescription> pharmacyRecipientId) {
+        this.pharmacyRecipientId = pharmacyRecipientId;
     }
 
     // to string
@@ -80,7 +79,7 @@ public class Pharmacy {
                 "pharmacyId=" + pharmacyId +
                 ", pharmacyName='" + pharmacyName + '\'' +
                 ", pharmacyAddress='" + pharmacyAddress + '\'' +
-                ", prescriptions=" + prescriptions +
+                ", prescriptions=" + pharmacyRecipientId +
                 '}';
     }
 }

@@ -1,7 +1,7 @@
 package com.project.roku.controller;
 
 import com.project.roku.entity.Patient;
-import com.project.roku.services.PatientRepoService;
+import com.project.roku.services.patient_services.PatientRepoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

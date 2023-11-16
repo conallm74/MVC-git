@@ -26,6 +26,7 @@
     <input type="hidden" th:field="*{patientId}">
 
 
+
     <p>Patient First Name: <span th:text="*{patientFirstName}"></span></p>
     <p>Patient Last Name: <span th:text="*{patientLastName}"></span></p>
     <p>Patient Address: <span th:text="*{patientAddress}"></span></p>
@@ -41,16 +42,20 @@
 
         <!-- Hidden field to store selected pharmacy -->
         <input type="hidden" th:field="*{pharmacyRecipientId}" id="recipientId">
+        <input type="hidden" id="hiddenRecipientId" name="pharmacyRecipientId" th:field="*{pharmacyRecipientId}">
     </div>
     <!-- enter a radio button for send to pharmacy or send to patient (QRCode) -->
     <input type="radio" value="Send to Pharmacy" name="sendTo" id="sendToPharmacy"> Send to Pharmacy
     <input type="radio" value="Send QR" name="sendToQr" id="sendToQr"> Send to Patient
 
+
     <div th:object="${pharmacies}">
     <div id="pharmacyDetails" style="display: none;">
-        <select class="form-control" id="pharmaciesDropdown" onchange="updateRecipientId()">
-            <option th:each="tempPharmacy : ${pharmacies}" th:value="${tempPharmacy.pharmacyName}" th:text="${tempPharmacy.pharmacyName}"></option>
+
+        <select class="form-control" id="pharmaciesDropdown" name="pharmacyRecipientId"onchange="updateRecipientId()">
+            <option th:each="tempPharmacy : ${pharmacies}" th:value="${tempPharmacy[1]}" th:text="${tempPharmacy[0] + ' - ' + tempPharmacy[1]}"></option>
         </select>
+
     </div>
     </div>
 
@@ -84,12 +89,15 @@
             sendToPharmacyRadio.checked = false; // Uncheck the other radio button
         }
     });
+function updateRecipientId() {
+    // Get the selected value from the dropdown
+    var selectedRecipientId = document.getElementById('pharmaciesDropdown').value;
 
-    function updateRecipientId() {
-            var selectedPharmacy = document.getElementById('pharmaciesDropdown');
-            var recipientIdField = document.getElementById('recipientId');
-            recipientIdField.value = selectedPharmacy.value;
-        }
+    // Set the value of the hidden field
+    document.getElementById('hiddenRecipientId').value = selectedRecipientId;
+}
+
+
 </script>
 
 

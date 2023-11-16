@@ -1,22 +1,17 @@
-package com.project.roku.services;
+package com.project.roku.services.prescription_services;
 
 import com.project.roku.DTO.PrescriptionDTO;
-import com.project.roku.dao.PatientRepository;
 import com.project.roku.dao.PrescriptionRepo;
-import com.project.roku.entity.Employee;
-import com.project.roku.entity.Patient;
-import com.project.roku.medical_entities.Pharmacy;
 import com.project.roku.medical_entities.Prescription;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class PrescriptionServiceImpl implements PrescriptionRepoService{
+@Service("uniquePrescriptionService")
+public class PrescriptionServiceImpl implements PrescriptionRepoService {
 
     @Autowired
     private PrescriptionRepo prescriptionRepo;

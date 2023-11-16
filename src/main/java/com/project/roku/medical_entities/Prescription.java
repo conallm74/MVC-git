@@ -1,15 +1,8 @@
 package com.project.roku.medical_entities;
 
-import com.project.roku.DTO.PrescriptionDTO;
-import com.project.roku.dao.PrescriptionRepo;
-import com.project.roku.services.PrescriptionServiceImpl;
 import jakarta.persistence.*;
-import org.modelmapper.ModelMapper;
-import org.springframework.context.annotation.Bean;
 
 import java.sql.Date;
-import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name="prescription")
@@ -37,19 +30,19 @@ public class Prescription {
 
     @ManyToOne
     @JoinColumn(name = "fk_pharmacy_recipient")
-    private Pharmacy pharmacies;
+    private Pharmacy pharmacyRecipientId;
 
     // constructors
     public Prescription(){}
 
-    public Prescription(int prescriptionId, int patientId, String medicationName, Date prescriptionDate, String dosage, String prescribingDoctor, Pharmacy pharmacies) {
+    public Prescription(int prescriptionId, int patientId, String medicationName, Date prescriptionDate, String dosage, String prescribingDoctor, Pharmacy pharmacyRecipientId) {
         this.prescriptionId = prescriptionId;
         this.patientId = patientId;
         this.medicationName = medicationName;
         this.prescriptionDate = prescriptionDate;
         this.dosage = dosage;
         this.prescribingDoctor = prescribingDoctor;
-        this.pharmacies = pharmacies;
+        this.pharmacyRecipientId = pharmacyRecipientId;
     }
 
     /*
@@ -117,15 +110,16 @@ public class Prescription {
         this.prescribingDoctor = prescribingDoctor;
     }
 
-    public Pharmacy getPharmacy() {
-        return pharmacies;
+    public Pharmacy getPharmacyRecipientId() {
+        return pharmacyRecipientId;
     }
 
-    public void setPharmacy(Pharmacy pharmacy) {
-        this.pharmacies = pharmacy;
+    public void setPharmacyRecipientId(Pharmacy pharmacyRecipientId) {
+        this.pharmacyRecipientId = pharmacyRecipientId;
     }
 
-    // to string
+
+// to string
 
 
     @Override
@@ -137,7 +131,7 @@ public class Prescription {
                 ", prescriptionDate=" + prescriptionDate +
                 ", dosage='" + dosage + '\'' +
                 ", prescribingDoctor='" + prescribingDoctor + '\'' +
-                ", pharmacy=" + pharmacies +
+                ", pharmacy=" + pharmacyRecipientId +
                 '}';
     }
 }

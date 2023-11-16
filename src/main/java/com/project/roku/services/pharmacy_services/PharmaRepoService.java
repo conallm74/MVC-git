@@ -1,4 +1,4 @@
-package com.project.roku.services;
+package com.project.roku.services.pharmacy_services;
 
 import com.project.roku.medical_entities.Pharmacy;
 
@@ -14,6 +14,6 @@ public interface PharmaRepoService {
 
     void deleteById(int theId);
 
-    List<Pharmacy> findAllPharmacies();
+    List<Object[]> findAllPharmacies();
 
 }

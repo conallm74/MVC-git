@@ -1,7 +1,6 @@
-package com.project.roku.services;
+package com.project.roku.services.employee_services;
 
 import com.project.roku.entity.Employee;
-import com.project.roku.entity.User;
 
 import java.util.List;
 

@@ -9,10 +9,16 @@ import java.util.List;
 
 @Repository
 public interface PharmacyRepoDao extends JpaRepository<Pharmacy, Integer> {
-    //@Query(value = "SELECT pharmacy_id, pharmacy_name, pharmacy_address FROM pharmacies", nativeQuery = true)
-    //public List<Pharmacy> findAllPharmacies();
+
+    @Query(value = "SELECT pharmacy_name, pharmacy_recipient_id FROM pharmacies", nativeQuery = true)
+    List<Object[]> findAllPharmacyNames();
+
+    /*
+    @Modifying
     @Query(value = "SELECT * FROM pharmacies", nativeQuery = true)
     public List<Pharmacy> findAllPharmacyNames();
+
+     */
 }
 
 
