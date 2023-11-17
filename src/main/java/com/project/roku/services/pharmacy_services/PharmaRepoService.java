@@ -16,4 +16,5 @@ public interface PharmaRepoService {
 
     List<Object[]> findAllPharmacies();
 
+    Integer findRecipientId(int pharmacyRecipientId);
 }

@@ -62,11 +62,11 @@ public class Pharmacy {
         this.pharmacyAddress = pharmacyAddress;
     }
 
-    public List<Prescription> getFkPharmacyRecipientId() {
+    public List<Prescription> getPharmacyRecipientId() {
         return pharmacyRecipientId;
     }
 
-    public void setFkPharmacyRecipientId(List<Prescription> pharmacyRecipientId) {
+    public void setPharmacyRecipientId(List<Prescription> pharmacyRecipientId) {
         this.pharmacyRecipientId = pharmacyRecipientId;
     }
 

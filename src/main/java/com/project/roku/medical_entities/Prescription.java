@@ -28,7 +28,7 @@ public class Prescription {
     @Column(name="prescribing_doctor")
     private String prescribingDoctor;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "fk_pharmacy_recipient")
     private Pharmacy pharmacyRecipientId;
 
@@ -119,7 +119,8 @@ public class Prescription {
     }
 
 
-// to string
+
+    // to string
 
 
     @Override

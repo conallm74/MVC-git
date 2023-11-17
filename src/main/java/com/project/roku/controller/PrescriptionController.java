@@ -71,9 +71,43 @@ public class PrescriptionController {
     // save the new prescription
     @PostMapping("/prescribePrescription")
     public String prescribePrescription(@ModelAttribute("prescription") Prescription thePrescription,
-                                        @RequestParam("pharmacyRecipientId") Integer pharmacyRecipientId){
+                                        @RequestParam(value="pharmacyRecipientId") int pharmacyRecipientId){
+
+
+        // Retrieve the selected pharmacy
+        Integer selectedPharmacy = serviceImpl.findRecipientId(pharmacyRecipientId);
+
         // Set the pharmacyRecipientId in the Prescription object
-        thePrescription.setPharmacyRecipientId(pharmacyRecipientId);
+        thePrescription.setPharmacyRecipientId(selectedPharmacy);
+
+        /*
+
+        // Retrieve the selected pharmacy recipientId
+        Integer selectedRecipientId = pharmacyRepoService.findRecipientId(pharmacyRecipientId);
+
+        // Create an instance of Pharmacy using the selectedRecipientId
+        Pharmacy selectedPharmacy = new Pharmacy();
+        thePrescription.setPharmacyRecipientId(selectedPharmacy);
+
+        // Set the pharmacyRecipientId in the Prescription object
+        thePrescription.setPharmacyRecipientId(selectedPharmacy);
+
+         */
+        // Retrieve the selected pharmacy details by its recipient ID
+        // Retrieve the pharmacy recipient ID
+        // thePrescription.setPharmacyRecipientId(pharmacyRecipientId);
+
+
+
+        /*
+        // Retrieve the selected pharmacy
+        Pharmacy selectedPharmacy = (Pharmacy) pharmacyRepoService.findAllPharmacies();
+
+        thePrescription.setPharmacyRecipientId(selectedPharmacy);
+
+         */
+        // Set the pharmacyRecipientId in the Prescription object
+        // thePrescription.setPharmacyRecipientId(pharmacyRecipientId);
 
         // convert the prescription to the DTo
 

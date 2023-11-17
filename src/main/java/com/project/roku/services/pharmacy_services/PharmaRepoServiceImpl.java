@@ -53,5 +53,10 @@ public class PharmaRepoServiceImpl implements PharmaRepoService {
         return pharmacyRepo.findAllPharmacyNames();
     }
 
+    @Override
+    public Integer findRecipientId(int recipientId) {
+        return pharmacyRepo.findRecipientId(recipientId);
+    }
+
 
 }
