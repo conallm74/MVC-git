@@ -54,7 +54,7 @@ public class PharmaRepoServiceImpl implements PharmaRepoService {
     }
 
     @Override
-    public Integer findRecipientId(int recipientId) {
+    public Pharmacy findRecipientId(int recipientId) {
         return pharmacyRepo.findRecipientId(recipientId);
     }
 

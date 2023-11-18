@@ -15,7 +15,7 @@ public interface PharmacyRepoDao extends JpaRepository<Pharmacy, Integer> {
     List<Object[]> findAllPharmacyNames();
 
     @Query(value = "SELECT pharmacy_recipient_id FROM pharmacies WHERE pharmacy_recipient_id = :recipientId", nativeQuery = true)
-    Integer findRecipientId(@Param("recipientId") int recipientId);
+    Pharmacy findRecipientId(@Param("recipientId") int recipientId);
     /*
     @Modifying
     @Query(value = "SELECT * FROM pharmacies", nativeQuery = true)
