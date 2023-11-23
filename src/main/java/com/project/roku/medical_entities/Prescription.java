@@ -1,5 +1,6 @@
 package com.project.roku.medical_entities;
 
+import com.project.roku.entity.Patient;
 import jakarta.persistence.*;
 
 import java.sql.Date;
@@ -29,20 +30,25 @@ public class Prescription {
     private String prescribingDoctor;
 
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "fk_pharmacy_recipient")
-    private Pharmacy pharmacyRecipientId;
+    @JoinColumn(name = "sent_to_pharmacy")
+    private Pharmacy pharmacy;
+
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "sent_to_patient")
+    private Patient patient;
 
     // constructors
     public Prescription(){}
 
-    public Prescription(int prescriptionId, int patientId, String medicationName, Date prescriptionDate, String dosage, String prescribingDoctor, Pharmacy pharmacyRecipientId) {
+    public Prescription(int prescriptionId, int patientId, String medicationName, Date prescriptionDate, String dosage, String prescribingDoctor, Pharmacy pharmacy, Patient patient) {
         this.prescriptionId = prescriptionId;
         this.patientId = patientId;
         this.medicationName = medicationName;
         this.prescriptionDate = prescriptionDate;
         this.dosage = dosage;
         this.prescribingDoctor = prescribingDoctor;
-        this.pharmacyRecipientId = pharmacyRecipientId;
+        this.pharmacy = pharmacy;
+        this.patient = patient;
     }
 
     /*
@@ -110,15 +116,21 @@ public class Prescription {
         this.prescribingDoctor = prescribingDoctor;
     }
 
-    public Pharmacy getPharmacyRecipientId() {
-        return pharmacyRecipientId;
+    public Pharmacy getPharmacy() {
+        return pharmacy;
     }
 
-    public void setPharmacyRecipientId(Pharmacy pharmacyRecipientId) {
-        this.pharmacyRecipientId = pharmacyRecipientId;
+    public void setPharmacy(Pharmacy pharmacy) {
+        this.pharmacy = pharmacy;
     }
 
+    public Patient getPatient() {
+        return patient;
+    }
 
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 
     // to string
 
@@ -132,7 +144,8 @@ public class Prescription {
                 ", prescriptionDate=" + prescriptionDate +
                 ", dosage='" + dosage + '\'' +
                 ", prescribingDoctor='" + prescribingDoctor + '\'' +
-                ", pharmacy=" + pharmacyRecipientId +
+                ", pharmacy=" + pharmacy +
+                ", patient=" + patient +
                 '}';
     }
 }

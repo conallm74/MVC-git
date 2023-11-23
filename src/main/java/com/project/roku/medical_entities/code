@@ -261,3 +261,8 @@ from the DTO class
     // Set the selected pharmacy ID to the hidden input
     hiddenInput.Value = selectedPharmacyId;
 }
+
+ <select class="form-control" id="pharmaciesDropdown" name="pharmacyRecipientId" onchange="updateRecipientId()">
+            <option th:each="pharmacy : ${pharmacies}" th:value="${pharmacy.pharmacyRecipientId}" th:data-recipient-id="${pharmacy.pharmacyRecipientId}" th:text="${pharmacy.pharmacyName}"></option>
+            <!--   <option th:each="pharmacy : ${pharmacies}" th:value="${pharmacy.pharmacyRecipientId + '-' + pharmacy.pharmacyName}" th:text="${pharmacy.pharmacyName}"></option> -->
+        </select>

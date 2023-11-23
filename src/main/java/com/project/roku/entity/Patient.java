@@ -1,17 +1,15 @@
 package com.project.roku.entity;
 
 
-import com.project.roku.DTO.PrescriptionDTO;
-import com.project.roku.medical_entities.Pharmacy;
+import com.project.roku.medical_entities.Prescription;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
@@ -36,15 +34,19 @@ public class Patient {
     @Column(name="address")
     private String patientAddress;
 
+    @OneToMany(mappedBy = "patient")
+    private List<Prescription> patients;
 
+    // constructors
 
-    public Patient(String firstName, String lastName, String patientEmail, String patientAddress) {
-        this.patientFirstName = firstName;
-        this.patientLastName = lastName;
+    public Patient(int patientId, String patientFirstName, String patientLastName, String patientEmail, String patientAddress, List<Prescription> patients) {
+        this.patientId = patientId;
+        this.patientFirstName = patientFirstName;
+        this.patientLastName = patientLastName;
         this.patientEmail = patientEmail;
         this.patientAddress = patientAddress;
+        this.patients = patients;
     }
-
 
     // mapping for DTO
 
@@ -121,7 +123,16 @@ public class Patient {
         this.patientAddress = patientAddress;
     }
 
+    public List<Prescription> getPatients() {
+        return patients;
+    }
+
+    public void setPatients(List<Prescription> patients) {
+        this.patients = patients;
+    }
+
     // to string
+
 
     @Override
     public String toString() {
@@ -131,6 +142,7 @@ public class Patient {
                 ", patientLastName='" + patientLastName + '\'' +
                 ", patientEmail='" + patientEmail + '\'' +
                 ", patientAddress='" + patientAddress + '\'' +
+                ", patients=" + patients +
                 '}';
     }
 }

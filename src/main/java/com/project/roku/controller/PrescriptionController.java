@@ -59,7 +59,7 @@ public class PrescriptionController {
         theModel.addAttribute("prescription", thePrescription);
 
         // retrieving the pharmacies for the drop-down menu
-        List<Object[]> pharmacyNames = serviceImpl.findAllPharmacies();
+        List<Pharmacy> pharmacyNames = serviceImpl.findAll();
         theModel.addAttribute("pharmacies", pharmacyNames);
 
         // send over to our form
@@ -68,14 +68,13 @@ public class PrescriptionController {
 
     // save the new prescription
     @PostMapping("/prescribePrescription")
-    public String prescribePrescription(@ModelAttribute("prescription") Prescription thePrescription,
-                                        @RequestParam(value="pharmacyRecipientId") int pharmacyRecipientId){
+    public String prescribePrescription(@ModelAttribute("prescription") Prescription thePrescription){
 
         // Retrieve the selected pharmacy
-        Pharmacy selectedPharmacy = serviceImpl.findRecipientId(pharmacyRecipientId);
+        // Pharmacy selectedPharmacy = serviceImpl.findById(pharmacyRecipientId);
 
         // Set the pharmacyRecipientId in the Prescription object
-        thePrescription.setPharmacyRecipientId(selectedPharmacy);
+        // thePrescription.setPharmacyRecipientId(selectedPharmacy);
         /*
         // convert the pharmacyName?
          */
