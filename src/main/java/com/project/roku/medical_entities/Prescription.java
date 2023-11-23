@@ -51,7 +51,7 @@ public class Prescription {
         this.patient = patient;
     }
 
-    /*
+/*
     // mapping to DTO
 
     Prescription convertDTOToPrescription(PrescriptionDTO dto){
@@ -65,7 +65,9 @@ public class Prescription {
         ); return prescription;
     }
 
-     */
+ */
+
+
     // getters and setters
 
     public int getPrescriptionId() {

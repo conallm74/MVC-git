@@ -2,7 +2,9 @@ package com.project.roku.entity;
 
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name="employee")
 public class Employee {
@@ -22,6 +24,8 @@ public class Employee {
     private String email;
 
     // define constructors
+
+    /*
 
     public Employee(){
     }
@@ -66,6 +70,8 @@ public class Employee {
     public void setEmail(String email) {
         this.email = email;
     }
+
+     */
 
     @Override
     public String toString() {
