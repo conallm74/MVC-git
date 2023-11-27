@@ -71,16 +71,6 @@ public class PrescriptionController {
     @PostMapping("/prescribePrescription")
     public String prescribePrescription(@ModelAttribute("prescription") Prescription thePrescription){
 
-        // Retrieve the selected pharmacy
-        // Pharmacy selectedPharmacy = serviceImpl.findById(pharmacyRecipientId);
-
-        // Set the pharmacyRecipientId in the Prescription object
-        // thePrescription.setPharmacyRecipientId(selectedPharmacy);
-        /*
-        // convert the pharmacyName?
-         */
-        // Prescription newPrescription = thePrescription.convertDTOToPrescription();
-        // Save the new Prescription entity in the database
         prescriptionService.save(thePrescription);
         return "redirect:patients/patient-list";
     }
@@ -104,7 +94,7 @@ public class PrescriptionController {
         prescriptionDTO.setMedicationName(thePrescription.getMedicationName());
 
         // send to server
-        // grpcService.sendPrescription(prescriptionDTO);
+        grpcService.sendPrescription(prescriptionDTO);
 
         return "redirect:patients/patient-list";
 
