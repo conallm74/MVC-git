@@ -1,10 +1,13 @@
 package com.project.roku.medical_entities;
 
+import com.project.roku.DTO.PrescriptionDTO;
 import com.project.roku.entity.Patient;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.sql.Date;
 
+@Data
 @Entity
 @Table(name="prescription")
 public class Prescription {
@@ -40,9 +43,8 @@ public class Prescription {
     // constructors
     public Prescription(){}
 
-    public Prescription(int prescriptionId, int patientId, String medicationName, Date prescriptionDate, String dosage, String prescribingDoctor, Pharmacy pharmacy, Patient patient) {
+    public Prescription(int prescriptionId, String medicationName, Date prescriptionDate, String dosage, String prescribingDoctor, Pharmacy pharmacy, Patient patient) {
         this.prescriptionId = prescriptionId;
-        this.patientId = patientId;
         this.medicationName = medicationName;
         this.prescriptionDate = prescriptionDate;
         this.dosage = dosage;
@@ -51,13 +53,15 @@ public class Prescription {
         this.patient = patient;
     }
 
-/*
+    public Prescription(int prescriptionId, String medicationName, Date prescriptionDate, String prescribingDoctor, String dosage) {
+    }
+
+
     // mapping to DTO
 
     Prescription convertDTOToPrescription(PrescriptionDTO dto){
         Prescription prescription = new Prescription(
                 dto.getPrescriptionId(),
-                dto.getPatientId(),
                 dto.getMedicationName(),
                 dto.getPrescriptionDate(),
                 dto.getPrescribingDoctor(),
@@ -65,7 +69,7 @@ public class Prescription {
         ); return prescription;
     }
 
- */
+ 
 
 
     // getters and setters
