@@ -1,5 +1,6 @@
 package com.project.roku.controller;
 
+import com.project.roku.DTO.PrescriptionDTO;
 import com.project.roku.entity.Patient;
 import com.project.roku.medical_entities.Pharmacy;
 import com.project.roku.medical_entities.Prescription;
@@ -84,6 +85,31 @@ public class PrescriptionController {
         return "redirect:patients/patient-list";
     }
 
+
+    @PostMapping("/sendPrescription")
+    public String sendPrescription(@ModelAttribute("prescription") Prescription thePrescription,
+                                   @ModelAttribute("patient") Patient thePatient,
+                                   Model theModel){
+        // create DTO for gRPC
+        PrescriptionDTO prescriptionDTO = new PrescriptionDTO();
+
+        // map related fields
+        prescriptionDTO.setPatientFirstName(thePatient.getPatientFirstName());
+        prescriptionDTO.setPatientLastName(thePatient.getPatientLastName());
+        prescriptionDTO.setDosage(thePrescription.getDosage());
+        prescriptionDTO.setPrescriptionDate(thePrescription.getPrescriptionDate());
+        prescriptionDTO.setPrescribingDoctor(thePrescription.getPrescribingDoctor());
+        prescriptionDTO.setPrescriptionId(thePrescription.getPrescriptionId());
+        prescriptionDTO.setPatientAddress(thePatient.getPatientAddress());
+        prescriptionDTO.setMedicationName(thePrescription.getMedicationName());
+
+        // send to server
+        // grpcService.sendPrescription(prescriptionDTO);
+
+        return "redirect:patients/patient-list";
+
+
+    }
 
 
 }

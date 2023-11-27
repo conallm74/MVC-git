@@ -1,13 +1,13 @@
 package com.project.roku.DTO;
 
 
-import com.project.roku.entity.Patient;
-import com.project.roku.medical_entities.Prescription;
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 // creating a DTO for data transfer and for easier data entry
 
 @Data
+@Component
 public class PrescriptionDTO {
 
     // fields from Prescription
@@ -29,6 +29,8 @@ public class PrescriptionDTO {
 
     private String patientAddress;
 
+
+    /*
 
     public PrescriptionDTO(){}
     // Create a PrescriptionDTO and populate it with data from the entities
@@ -53,4 +55,6 @@ public class PrescriptionDTO {
         // Set any other fields as needed
         return prescription;
     }
+
+     */
 }

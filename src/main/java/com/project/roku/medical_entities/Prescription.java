@@ -1,6 +1,5 @@
 package com.project.roku.medical_entities;
 
-import com.project.roku.DTO.PrescriptionDTO;
 import com.project.roku.entity.Patient;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -59,6 +58,7 @@ public class Prescription {
 
     // mapping to DTO
 
+    /*
     Prescription convertDTOToPrescription(PrescriptionDTO dto){
         Prescription prescription = new Prescription(
                 dto.getPrescriptionId(),
@@ -68,6 +68,8 @@ public class Prescription {
                 dto.getDosage()
         ); return prescription;
     }
+
+     */
 
  
 

@@ -20,7 +20,7 @@
     <p class="h4 mb-4">Prescription Form</p>
 </div>
 
-<form action="#" th:action="@{/prescriptions/prescribePrescription}" th:object="${patient}" method="POST">
+<form action="#" th:action="@{/prescriptions/prescribePrescription/sendPrescription}" th:object="${patient}" method="POST">
 
     <!-- Adding hidden form fields to handle updates -->
     <input type="hidden" th:field="*{patientId}">
