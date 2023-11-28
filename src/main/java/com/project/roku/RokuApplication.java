@@ -14,6 +14,14 @@ public class RokuApplication {
 	@Bean
 	Pharmacy getPharmacyName(){return new Pharmacy();}
 
+
+	@Bean(name = "application")
+	EmployeeRepoService getEmployeeService(){return new EmployeeRepoService() {
+	}}
+
+	@Bean(name = "employeeDao")
+	EmployeeRepoServiceImpl getEmployeeRepo(){return new EmployeeRepoServiceImpl();}
+
 	 */
 
 }

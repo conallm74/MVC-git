@@ -29,32 +29,4 @@ public class PrescriptionDTO {
 
     private String patientAddress;
 
-
-    /*
-
-    public PrescriptionDTO(){}
-    // Create a PrescriptionDTO and populate it with data from the entities
-    public void populateFromEntities(Prescription thePrescription, Patient thePatient) {
-        this.patientFirstName = thePatient.getPatientFirstName();
-        this.patientLastName = thePatient.getPatientLastName();
-        this.patientAddress = thePatient.getAddress();
-        this.prescriptionId = thePrescription.getPrescriptionId();
-        this.prescriptionDate = thePrescription.getPrescriptionDate();
-        this.medicationName = thePrescription.getMedicationName();
-        this.dosage = thePrescription.getDosage();
-        this.prescribingDoctor = thePrescription.getPrescribingDoctor();
-    }
-
-    public Prescription convertDTOToPrescription() {
-        Prescription prescription = new Prescription();
-        prescription.setMedicationName(this.medicationName);
-        prescription.setPrescriptionDate(this.prescriptionDate);
-        prescription.setDosage(this.dosage);
-        prescription.setPrescribingDoctor(this.prescribingDoctor);
-
-        // Set any other fields as needed
-        return prescription;
-    }
-
-     */
 }

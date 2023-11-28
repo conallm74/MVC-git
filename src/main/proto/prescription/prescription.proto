@@ -6,9 +6,40 @@ option java_package = "com.proto.prescription";
 
 option java_multiple_files = true;
 
-message PrescriptionRequest {
-  int32 prescription_id = 1;
-  string medication_name = 1;
-  string
+import "google/protobuf/timestamp.proto";
+
+
+message PharmacyPrescriptionRequest {
+  string patient_first_name = 1;
+  string patient_last_name = 2;
+  string patient_address = 3;
+  string prescriber_name = 4;
+  int32 prescription_id = 5;
+  string medication_name = 6;
+  google.protobuf.Timestamp prescription_date = 7;
+  string dosage = 8;
+  Target target_type = 9;
+
 
 }
+
+enum Target {
+  PHARMACY = 0;
+  // PATIENT_QR = 1;
+}
+
+message PharmacyPrescriptionResponse {
+  string patient_first_name = 1;
+  string patient_last_name = 2;
+  string patient_address = 3;
+  string prescriber_name = 4;
+  int32 prescription_id = 5;
+  string medication_name = 6;
+  google.protobuf.Timestamp prescription_date = 7;
+  string dosage = 8;
+}
+
+service PrescriptionService {
+  rpc ServerStreamingRPC (PharmacyPrescriptionRequest) returns (stream PharmacyPrescriptionResponse);
+}
+
